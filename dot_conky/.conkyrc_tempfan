@@ -68,5 +68,5 @@ ${color2}Fan 3 Speed ${alignr}${color0}${hwmon 1 fan 3} RPM
 ${color2}Fan 4 Speed ${alignr}${color0}${hwmon 1 fan 4} RPM
 ${color2}Fan 5 Speed ${alignr}${color0}${hwmon 1 fan 5} RPM
 ${color2}Fan 6 Speed ${alignr}${color0}${hwmon 1 fan 6} RPM
-${image /home/budiman/.conky/JOJO/intel-linux.png -p 0,150 -s 200x132}
+${image $HOME/.conky/JOJO/intel-linux.png -p 0,150 -s 200x132}
 ]]

@@ -46,7 +46,7 @@
     "disk#home": {
       "format": " {used}",
       "interval": 30,
-      "path": "/home/budiman"
+      "path": "$HOME"
     },
 
     "disk#root": {
@@ -137,7 +137,7 @@
     "disk#home": {
       "format": " {used}",
       "interval": 30,
-      "path": "/home/budiman"
+      "path": "$HOME"
     },
 
     "disk#root": {

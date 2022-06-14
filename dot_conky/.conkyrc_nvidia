@@ -61,5 +61,5 @@ ${execibar 1 nvidia-smi -q | grep "Fan Speed" | awk '{print $4 $5}'}
 ${color2}GPU Clock ${alignr}${color0}${nvidia gpufreq} MHz
 ${color2}Mem Clock ${alignr}${color0}${nvidia memfreq} MHz
 ${color2}Mem Used ${alignr}${color0}${execi 5 nvidia-settings -q [gpu:0]/UsedDedicatedGPUMemory -t} / ${exec nvidia-settings -q [gpu:0]/TotalDedicatedGPUMemory -t} MiB
-${image /home/budiman/.conkyrc/nvidia-linux.png -p 0,120 -s 200x132}
+${image $HOME/.conkyrc/nvidia-linux.png -p 0,120 -s 200x132}
 ]]
