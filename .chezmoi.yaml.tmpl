@@ -9,14 +9,14 @@
 {{- $agekey := false -}}{{/* true if this machine has agekey to decrypt secret */}}
 
 {{- $hostname := .chezmoi.hostname -}}
-{{- if eq $hostname "budimanjojo-main" -}}
+{{- if eq $hostname "TAURUS" -}}
 {{-   $headless = false -}}
 {{-   $kubernetes = true -}}
 {{-   $i3wm = false -}}
 {{-   $swaywm = true -}}
 {{-   $agekey = true -}}
 {{- end -}}
-{{- if eq $hostname "budiman-desktop" -}}
+{{- if eq $hostname "vpc15" -}}
 {{-   $headless = false -}}
 {{-   $kubernetes = true -}}
 {{-   $i3wm = false -}}
@@ -53,8 +53,8 @@ format: yaml
 encryption: age
 {{- if $agekey }}
 age:
-  identity: /home/budiman/.config/sops/age/keys.txt
-  recipient: age1zeqkpfz7e3s207ynea0z0auc0mrct0pc7w4sh6j3d0c4qac3dahqj9ufdg
+  identity: /home/testuser/.config/sops/age/keys.txt
+  recipient: age1zla5dfxsha948r885t80g333eppk7kg7cmcswyqndl4awj79svzqjz2996
 {{- end }}
 merge:
   command: nvim
