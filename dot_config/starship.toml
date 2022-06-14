@@ -78,3 +78,35 @@ style = "yellow"
 success_symbol = "[](green)"
 error_symbol = "[](green)"
 vicmd_symbol = "[](purple)"
+
+[custom.talos]
+command = "yq e '.context' ~/.talos/config"
+when = "test -f ~/.talos/config"
+symbol = "🐦"
+style = "yellow"
+format = '\[[$symbol $output]($style)\] '
+shell = ["bash", "--noprofile", "--norc"]
+
+[custom.kubens]
+command = "kubens --current"
+when = "test -f ~/.kube/config && test -x $(which kubens)"
+symbol = ""
+style = "green"
+format = '\[[$symbol $output]($style)\] '
+shell = ["bash", "--noprofile", "--norc"]
+
+[custom.kubeStatus]
+command = "kubectl get nodes --no-headers | awk '$2 ~ /^Ready/ { ready++ } END { print ready\"/\"NR }'"
+when = "test -f ~/.kube/config"
+symbol = "歷"
+style = "cyan"
+format = '\[[$symbol $output]($style)\] '
+shell = ["bash", "--noprofile", "--norc"]
+
+[custom.kubeNotReady]
+command = "kubectl get nodes --no-headers | awk '$2~\"NotReady\" {printf \"%s%s\",sep,$1; sep=\", \"} END{print \"\"}'"
+when = "test \"$(kubectl get nodes --no-headers | awk '{print $2}' | uniq)\" != \"Ready\""
+symbol = "戀"
+style = "red"
+format = '\[[$symbol $output]($style)\] '
+shell = ["bash", "--noprofile", "--norc"]
