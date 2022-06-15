@@ -7,7 +7,10 @@ $git_status\
 $fill\
 $python \
 $status\
-$custom.kubeStatus\
+$Kubens\
+$kubeStatus\
+$kubeNotReady\
+$talos\
 $cmd_duration\
 $line_break\
 $character
