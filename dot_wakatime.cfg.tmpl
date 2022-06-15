@@ -1,5 +1,5 @@
 [settings]
-api_key = {{- onepasswordDocument "47cfuxbtuka4kaxpkvp7ueze3i" -}}
+api_key = {{ (index (onepassword "47cfuxbtuka4kaxpkvp7ueze3i"").fields 1).value }}
 
 [internal]
 backoff_at      =
