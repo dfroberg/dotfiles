@@ -14,6 +14,11 @@ curl -sS https://webinstall.dev/shfmt | bash
 curl -sS https://webinstall.dev/xz | bash
 curl -sS https://webinstall.dev/keypairs | bash
 curl -sS https://webinstall.dev/brew | bash
+# go
+curl -sS https://webinstall.dev/go | bash
+# Add aditional modules
+go install golang.org/x/tools/gopls@latest
+# Starship
 curl -sS https://starship.rs/install.sh | sh
 # WakaTime
 python3 -c "$(wget -q -O - https://raw.githubusercontent.com/wakatime/vim-wakatime/master/scripts/install_cli.py)"
