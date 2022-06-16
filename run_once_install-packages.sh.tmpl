@@ -15,18 +15,15 @@ curl -sS https://webinstall.dev/xz | bash
 curl -sS https://webinstall.dev/keypairs | bash
 curl -sS https://webinstall.dev/brew | bash
 curl -sS https://starship.rs/install.sh | sh
-
 # WakaTime
 python3 -c "$(wget -q -O - https://raw.githubusercontent.com/wakatime/vim-wakatime/master/scripts/install_cli.py)"
 # 1pass
 curl -sL -o /tmp/op_linux_amd64_v2.4.1.zip https://cache.agilebits.com/dist/1P/op2/pkg/v2.4.1/op_linux_amd64_v2.4.1.zip && \
 cd /tmp && unzip op_linux_amd64_v2.4.1.zip && cp op $HOME/.local/bin && rm op* && cd
-
 # Brew packages
 brew install aws-vault ripgrep exa
 brew install go-task/tap/go-task
 brew install fisher
-
 # Fisher and packages
 fisher install jorgebucaran/fisher
 fisher install patrickf1/fzf.fish
