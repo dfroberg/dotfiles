@@ -9,7 +9,7 @@
 {{- $agekey := false -}}{{/* true if this machine has agekey to decrypt secret */}}
 
 {{- $hostname := .chezmoi.hostname -}}
-{{- if eq $hostname "TAURUS" -}}
+{{- if eq $hostname "taurus" -}}
 {{-   $headless = false -}}
 {{-   $kubernetes = true -}}
 {{-   $i3wm = false -}}
@@ -52,9 +52,9 @@ data:
 format: yaml
 encryption: age
 {{- if $agekey }}
-age:
-  identity: /home/testuser/.config/sops/age/keys.txt
-  recipient: age159ce95h5mlt0emfhgdgntu8z50pjfdvxell9s4zxt5ly5mh7ugvq2g5nsu
+#age:
+#  identity: /home/testuser/.config/sops/age/keys.txt
+#  recipient: age159ce95h5mlt0emfhgdgntu8z50pjfdvxell9s4zxt5ly5mh7ugvq2g5nsu
 {{- end }}
 merge:
   command: nvim
