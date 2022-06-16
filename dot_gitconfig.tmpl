@@ -1,8 +1,15 @@
 [user]
   email = danny@froberg.org
-  name = dfroberg
+  name = Danny Froberg
+  signingkey = 521983FB5BA5CDF71E4C7366479FB363C1147A52
 [commit]
   template = {{ .chezmoi.homeDir }}/.gitcommit-message
+[credential]
+  helper = store --file ~/.my-credentials
+[commit]
+  gpgsign = true
+[log]
+  showSignature = true
 {{- if (eq .chezmoi.hostname "ansible-server") }}
 [status]
   submodulesummary = true
