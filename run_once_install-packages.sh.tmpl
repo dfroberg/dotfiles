@@ -4,7 +4,6 @@
 sudo apt install -y pass fish git fd-find fzf bat zoxide curl xz-utils 
 # Local
 curl -sS https://webinstall.dev/webi | bash
-curl -sS https://webinstall.dev/exa | bash
 curl -sS https://webinstall.dev/yq | bash
 curl -sS https://webinstall.dev/kubectx | bash
 curl -sS https://webinstall.dev/kubens | bash
@@ -14,17 +13,9 @@ curl -sS https://webinstall.dev/shellcheck | bash
 curl -sS https://webinstall.dev/shfmt | bash
 curl -sS https://webinstall.dev/xz | bash
 curl -sS https://webinstall.dev/keypairs | bash
-sh -c "$(curl --location https://taskfile.dev/install.sh)" -- -d -b $HOME/.local/bin
 curl -sS https://webinstall.dev/brew | bash
 curl -sS https://starship.rs/install.sh | sh
-# Fisher and packages
-curl -sSL https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fisher.fish | source
-fisher install jorgebucaran/fisher
-fisher install patrickf1/fzf.fish
-fisher install nickeb96/puffer-fish
-fisher install budimanjojo/tmux.fish
-fisher install jorgebucaran/autopair.fish
-fisher install gazorby/fish-abbreviation-tips
+
 # WakaTime
 python3 -c "$(wget -q -O - https://raw.githubusercontent.com/wakatime/vim-wakatime/master/scripts/install_cli.py)"
 # 1pass
@@ -32,13 +23,23 @@ curl -sL -o /tmp/op_linux_amd64_v2.4.1.zip https://cache.agilebits.com/dist/1P/o
 cd /tmp && unzip op_linux_amd64_v2.4.1.zip && cp op $HOME/.local/bin && rm op* && cd
 
 # Brew packages
-brew install aws-vault ripgrep
+brew install aws-vault ripgrep exa
+brew install go-task/tap/go-task
+brew install fisher
+
+# Fisher and packages
+fisher install jorgebucaran/fisher
+fisher install patrickf1/fzf.fish
+fisher install nickeb96/puffer-fish
+fisher install budimanjojo/tmux.fish
+fisher install jorgebucaran/autopair.fish
+fisher install gazorby/fish-abbreviation-tips
 
 # MACs ##########################################################################
 {{ else if eq .chezmoi.os "darwin" -}}
 #!/bin/sh
 brew install ripgrep pass aws-vault
-
+brew install go-task/tap/go-task
 
 
 {{ end -}}
