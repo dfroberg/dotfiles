@@ -14,12 +14,7 @@ curl -sS https://webinstall.dev/shfmt | bash
 curl -sS https://webinstall.dev/xz | bash
 curl -sS https://webinstall.dev/keypairs | bash
 curl -sS https://webinstall.dev/brew | bash
-# go
-curl -sS https://webinstall.dev/go | bash
-# Add aditional modules
-export PATH="/home/$USER/.local/opt/go/bin:$PATH"
-export PATH="/home/$USER/go/bin:$PATH"
-# go install golang.org/x/tools/gopls@latest
+
 # Starship
 curl -sS https://starship.rs/install.sh | sh
 # WakaTime
@@ -30,6 +25,12 @@ export PATH="/home/$USER/.local/opt/brew/sbin:$PATH"
 brew install aws-vault ripgrep exa
 brew install go-task/tap/go-task
 brew install fisher
+brew install go
+
+# Add aditional modules
+export PATH="/home/$USER/.local/opt/go/bin:$PATH"
+export PATH="/home/$USER/go/bin:$PATH"
+go install golang.org/x/tools/gopls@latest
 
 # MACs ##########################################################################
 {{ else if eq .chezmoi.os "darwin" -}}
