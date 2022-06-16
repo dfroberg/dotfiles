@@ -1,19 +1,21 @@
 {{ if eq .chezmoi.os "linux" -}}
 #!/bin/bash
 # Global
-sudo apt install -y ripgrep pass fish git fd-find fzf bat zoxide curl xz-utils 
+sudo apt install -y pass fish git fd-find fzf bat zoxide curl xz-utils 
 # Local
+curl -sS https://webinstall.dev/webi | bash
+curl -sS https://webinstall.dev/exa | bash
 curl -sS https://webinstall.dev/yq | bash
 curl -sS https://webinstall.dev/kubectx | bash
 curl -sS https://webinstall.dev/kubens | bash
 curl -sS https://webinstall.dev/k9s | bash
 curl -sS https://webinstall.dev/gh | bash
-curl -sS https://webinstall.dev/exa | bash
+curl -sS https://webinstall.dev/shellcheck | bash
+curl -sS https://webinstall.dev/shfmt | bash
+curl -sS https://webinstall.dev/xz | bash
+curl -sS https://webinstall.dev/keypairs | bash
 sh -c "$(curl --location https://taskfile.dev/install.sh)" -- -d -b $HOME/.local/bin
 curl -sS https://webinstall.dev/brew | bash
-curl -sS -L -o /tmp/shellcheck-v0.8.0.linux.x86_64.tar.xz https://github.com/koalaman/shellcheck/releases/download/v0.8.0/shellcheck-v0.8.0.linux.x86_64.tar.xz && \
-cd /tmp && tar -xvf /tmp/shellcheck-v0.8.0.linux.x86_64.tar.xz && \
-cp /tmp/shellcheck-v0.8.0/shellcheck $HOME/.local/bin/
 curl -sS https://starship.rs/install.sh | sh
 # Fisher and packages
 curl -sSL https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fisher.fish | source
@@ -30,7 +32,7 @@ curl -sL -o /tmp/op_linux_amd64_v2.4.1.zip https://cache.agilebits.com/dist/1P/o
 cd /tmp && unzip op_linux_amd64_v2.4.1.zip && cp op $HOME/.local/bin && rm op* && cd
 
 # Brew packages
-brew install aws-vault
+brew install aws-vault ripgrep
 
 # MACs ##########################################################################
 {{ else if eq .chezmoi.os "darwin" -}}
