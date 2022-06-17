@@ -6,5 +6,5 @@ fish_add_path {{ .chezmoi.homeDir }}/.local/share/aquaproj-aqua/bin
 fish_add_path {{ .chezmoi.homeDir }}/.local/opt/brew/bin
 fish_add_path {{ .chezmoi.homeDir }}/.local/opt/brew/sbin
 {{ if eq .chezmoi.hostname "taurus" -}}
-fish_add_path {{ /mnt/c/Users/danny/AppData/Local/Programs/Microsoft\ VS\ Code/bin }}
+fish_add_path {{ /mnt/c/Users/danny/AppData/Local/Programs/'Microsoft VS Code'/bin }}
 {{ end -}}
