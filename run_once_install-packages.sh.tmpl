@@ -16,7 +16,8 @@ curl -sS https://webinstall.dev/keypairs | bash
 # sudo curl -sS https://webinstall.dev/brew | bash
 # Do the master install of brew
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
-
+echo 'eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"' >> /home/$USER/.profile
+eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 # Starship
 curl -sS https://starship.rs/install.sh | sh
 # WakaTime
@@ -24,11 +25,14 @@ python3 -c "$(wget -q -O - https://raw.githubusercontent.com/wakatime/vim-wakati
 # Brew packages
 export PATH="/home/linuxbrew/.linuxbrew/bin:$PATH"
 export PATH="/home/linuxbrew/.linuxbrew/sbin:$PATH"
-brew install aws-vault ripgrep exa tmux
-brew install go-task/tap/go-task
-brew install fisher
+brew install aws-vault 
+brew install ripgrep 
+brew install exa 
+brew install tmux 
+brew install gcc 
+brew install fisher 
 brew install go
-
+brew install go-task/tap/go-task
 
 # Add aditional modules
 export PATH="/home/$USER/.local/opt/go/bin:$PATH"
