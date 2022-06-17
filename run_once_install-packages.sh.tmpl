@@ -13,7 +13,9 @@ curl -sS https://webinstall.dev/shellcheck | bash
 curl -sS https://webinstall.dev/shfmt | bash
 curl -sS https://webinstall.dev/xz | bash
 curl -sS https://webinstall.dev/keypairs | bash
-curl -sS https://webinstall.dev/brew | bash
+# sudo curl -sS https://webinstall.dev/brew | bash
+# Do the master install of brew
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
 
 # Starship
 curl -sS https://starship.rs/install.sh | sh
