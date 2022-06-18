@@ -8,6 +8,6 @@ fish_add_path {{ .chezmoi.homeDir }}/.krew/bin
 fish_add_path /home/linuxbrew/.linuxbrew/bin/
 fish_add_path /home/linuxbrew/.linuxbrew/sbin/
 {{ end -}}
-{{ if eq .chezmoi.hostname "taurus21" | if eq .chezmoi.hostname "taurus20" -}}
+{{ if eq .chezmoi.hostname "taurus21" | eq .chezmoi.hostname "taurus20" -}}
 fish_add_path /mnt/c/Users/danny/AppData/Local/Programs/'Microsoft VS Code'/bin
 {{ end -}}
