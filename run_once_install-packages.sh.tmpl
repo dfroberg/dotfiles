@@ -1,7 +1,7 @@
 {{ if eq .chezmoi.os "linux" -}}
 #!/bin/bash
 # Global
-sudo apt install -y pass fish git fd-find fzf bat zoxide curl xz-utils
+sudo apt install -y pass git fd-find fzf bat zoxide curl xz-utils
 # Local
 curl -sS https://webinstall.dev/webi | bash
 curl -sS https://webinstall.dev/yq | bash
@@ -17,7 +17,7 @@ curl -sS https://webinstall.dev/keypairs | bash
 # Starship
 curl -sS https://starship.rs/install.sh | sh
 # WakaTime
-python3 -c "$(wget -q -O - https://raw.githubusercontent.com/wakatime/vim-wakatime/master/scripts/install_cli.py)"
+# python3 -c "$(wget -q -O - https://raw.githubusercontent.com/wakatime/vim-wakatime/master/scripts/install_cli.py)"
 # Brew packages
 export PATH=$PATH:/home/linuxbrew/.linuxbrew/bin/
 export PATH=$PATH:/home/linuxbrew/.linuxbrew/sbin/
@@ -29,6 +29,8 @@ brew install gcc
 brew install fisher
 brew install go
 brew install go-task/tap/go-task
+brew install wakatime-cl
+
 
 # Add aditional modules
 export PATH="/home/$USER/.local/opt/go/bin:$PATH"
