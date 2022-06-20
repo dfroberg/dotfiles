@@ -28,6 +28,7 @@ brew install ripgrep
 brew install exa
 brew install shellcheck
 brew install shfmt
+brew install yamllint
 brew install yq
 brew install xz
 brew install tmux
@@ -42,7 +43,6 @@ brew install tfenv
 brew install ansible
 brew install clusterctl
 brew tap siderolabs/talos
-brew install --cask --no-quarantine talosctl
 
 # Add aditional modules
 export PATH="/home/$USER/.local/opt/go/bin:$PATH"
@@ -68,7 +68,10 @@ brew install yq
 brew install xz
 brew install shellcheck
 brew install shfmt
+brew install yamllint
 brew install clusterctl
+brew tap siderolabs/talos
+brew install --cask --no-quarantine talosctl
 
 
 {{ end -}}
