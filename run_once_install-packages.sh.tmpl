@@ -1,5 +1,6 @@
 {{ if eq .chezmoi.os "linux" -}}
 #!/bin/bash
+echo -e "\033[0;32m>>>>> Begin Setting Up Custom Packages <<<<<\033[0m"
 # Global
 sudo apt install -y pass git fd-find fzf bat zoxide curl xz-utils
 # Local
@@ -22,6 +23,8 @@ curl -sS https://starship.rs/install.sh | sh
 export PATH=$PATH:/home/linuxbrew/.linuxbrew/bin/
 export PATH=$PATH:/home/linuxbrew/.linuxbrew/sbin/
 brew install aws-vault
+brew install awscli
+brew install eksctl
 brew install ripgrep
 brew install exa
 brew install tmux
@@ -30,18 +33,24 @@ brew install fisher
 brew install go
 brew install go-task/tap/go-task
 brew install wakatime-cl
+brew install pulumi
+brew install terraform
+brew install tfenv
+brew install ansible
 
 
 # Add aditional modules
 export PATH="/home/$USER/.local/opt/go/bin:$PATH"
 export PATH="/home/$USER/go/bin:$PATH"
 go install golang.org/x/tools/gopls@latest
-
+echo -e "\033[0;32m>>>>> End Setting Up Custom Packages <<<<<\033[0m"
 # MACs ##########################################################################
 {{ else if eq .chezmoi.os "darwin" -}}
 #!/bin/sh
-brew install ripgrep pass aws-vault
+brew install ripgrep pass aws-vault awscli
 brew install go-task/tap/go-task
-
+brew install terraform
+brew install tfenv
+brew install ansible
 
 {{ end -}}
