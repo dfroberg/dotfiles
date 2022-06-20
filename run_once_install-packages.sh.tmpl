@@ -5,14 +5,6 @@ echo -e "\033[0;32m>>>>> Begin Setting Up Custom Packages <<<<<\033[0m"
 sudo apt install -y pass git fd-find fzf bat zoxide curl xz-utils
 # Local
 curl -sS https://webinstall.dev/webi | bash
-curl -sS https://webinstall.dev/yq | bash
-curl -sS https://webinstall.dev/kubectx | bash
-curl -sS https://webinstall.dev/kubens | bash
-curl -sS https://webinstall.dev/k9s | bash
-curl -sS https://webinstall.dev/gh | bash
-curl -sS https://webinstall.dev/shellcheck | bash
-curl -sS https://webinstall.dev/shfmt | bash
-curl -sS https://webinstall.dev/xz | bash
 curl -sS https://webinstall.dev/keypairs | bash
 
 # Starship
@@ -22,11 +14,19 @@ curl -sS https://starship.rs/install.sh | sh
 # Brew packages
 export PATH=$PATH:/home/linuxbrew/.linuxbrew/bin/
 export PATH=$PATH:/home/linuxbrew/.linuxbrew/sbin/
+brew install gh
+brew install kubectl
+brew install kubectx
+brew install derailed/k9s/k9s
 brew install aws-vault
 brew install awscli
 brew install eksctl
 brew install ripgrep
 brew install exa
+brew install shellcheck
+brew install shfmt
+brew install yq
+brew install xz
 brew install tmux
 brew install gcc
 brew install fisher
@@ -47,10 +47,18 @@ echo -e "\033[0;32m>>>>> End Setting Up Custom Packages <<<<<\033[0m"
 # MACs ##########################################################################
 {{ else if eq .chezmoi.os "darwin" -}}
 #!/bin/sh
+brew install gh
 brew install ripgrep pass aws-vault awscli
 brew install go-task/tap/go-task
+brew install kubectl
+brew install kubectx
+brew install derailed/k9s/k9s
 brew install terraform
 brew install tfenv
 brew install ansible
+brew install yq
+brew install xz
+brew install shellcheck
+brew install shfmt
 
 {{ end -}}
