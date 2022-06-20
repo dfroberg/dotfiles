@@ -4,7 +4,7 @@ echo -e "\033[0;32m>>>>> Begin Setting Up Custom Packages <<<<<\033[0m"
 # Ensure environment is good
 ulimit -u 8192
 # Global
-sudo apt install -y pass git fd-find fzf bat zoxide curl xz-utils
+sudo apt install -y pass git fd-find fzf zoxide curl
 # Local
 curl -sS https://webinstall.dev/webi | bash
 curl -sS https://webinstall.dev/keypairs | bash
@@ -16,7 +16,9 @@ curl -sS https://starship.rs/install.sh | sh
 # Brew packages
 export PATH=$PATH:/home/linuxbrew/.linuxbrew/bin/
 export PATH=$PATH:/home/linuxbrew/.linuxbrew/sbin/
+brew install direnv
 brew install gh
+brew install bat
 brew install kubectl
 brew install kubectx
 brew install kustomize
@@ -29,7 +31,9 @@ brew install exa
 brew install shellcheck
 brew install shfmt
 brew install yamllint
+brew install sops
 brew install yq
+brew install jq
 brew install xz
 brew install tmux
 brew install gcc
@@ -53,8 +57,9 @@ echo -e "\033[0;32m>>>>> End Setting Up Custom Packages <<<<<\033[0m"
 {{ else if eq .chezmoi.os "darwin" -}}
 #!/bin/sh
 ulimit -n 8192
-
+brew install direnv
 brew install gh
+brew install bat
 brew install ripgrep pass aws-vault awscli
 brew install go-task/tap/go-task
 brew install kubectl
