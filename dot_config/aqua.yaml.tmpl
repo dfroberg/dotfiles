@@ -13,9 +13,9 @@ packages:
   - name: sharkdp/bat@v0.21.0
   - name: ogham/exa@v0.10.1
   - name: blacknon/hwatch@0.3.6
-  - name: mikefarah/yq
-  - name: stedolan/jq
-  - name: neovim/neovim
+  - name: mikefarah/yq@v4.25.2
+  - name: stedolan/jq@jq-1.6
+  - name: neovim/neovim@v0.7.0
 
 
 {{-   if .agekey }}
@@ -27,31 +27,31 @@ packages:
   - name: go-task/task@v3.13.0
   - name: direnv/direnv@v2.32.0
   - name: goreleaser/goreleaser@v1.9.2
-  - name: Songmu/goxz
-  - name: golang/tools/gopls
-  - name: terraform-docs/terraform-docs
-  - name: tfmigrator/cli
-  - name: hashicorp/terraform-plugin-docs
-  - name: tfutils/tfenv
-  - name: terraform-linters/tflint
-  - name: kubernetes-sigs/cluster-api
-  - name: 99designs/aws-vault
-  - name: pulumi/pulumi
-  - name: weaveworks/eksctl
-  - name: awslabs/git-secrets
+  - name: Songmu/goxz@v0.8.2
+  - name: golang/tools/gopls@latest
+  - name: terraform-docs/terraform-docs@latest
+  - name: tfmigrator/cli@latest
+  - name: hashicorp/terraform-plugin-docs@latest
+  - name: tfutils/tfenv@latest
+  - name: terraform-linters/tflint@latest
+  - name: kubernetes-sigs/cluster-api@latest
+  - name: 99designs/aws-vault@latest
+  - name: pulumi/pulumi@latest
+  - name: weaveworks/eksctl@latest
+  - name: awslabs/git-secrets@latest
 {{-   end }}
 {{-   if .kubernetes }}
   - name: kubernetes/kubectl@v1.24.1
-  - name: ahmetb/kubectx
-  - name: ahmetb/kubens
-  - name: kubernetes-sigs/krew
-  - name: ahmetb/kubectl-tree
-  - name: aquasecurity/kubectl-who-can
-  - name: armosec/kubescape
-  - name: pulumi/kubespy
-  - name: kubecost/kubectl-cost
-  - name: kastenhq/kubestr
-  - name: hidetatz/kubecolor
+  - name: ahmetb/kubectx@latest
+  - name: ahmetb/kubens@latest
+  - name: kubernetes-sigs/krew@latest
+  - name: ahmetb/kubectl-tree@latest
+  - name: aquasecurity/kubectl-who-can@latest
+  - name: armosec/kubescape@latest
+  - name: pulumi/kubespy@latest
+  - name: kubecost/kubectl-cost@latest
+  - name: kastenhq/kubestr@latest
+  - name: hidetatz/kubecolor@latest
   - name: fluxcd/flux2@v0.31.1
   - name: kubernetes-sigs/kustomize@kustomize/v4.5.5
   - name: mozilla/sops@v3.7.3
