@@ -1,10 +1,11 @@
-fish_add_path {{ .chezmoi.homeDir }}/.local/bin
-fish_add_path {{ .chezmoi.homeDir }}/node_modules/.bin
-fish_add_path {{ .chezmoi.homeDir }}/go/bin
-fish_add_path {{ .chezmoi.homeDir }}/.local/opt/go/bin
-fish_add_path {{ .chezmoi.homeDir }}/.local/share/aquaproj-aqua/bin
-fish_add_path {{ .chezmoi.homeDir }}/.krew/bin
-fish_add_path {{ .chezmoi.homeDir }}/bin
+fish_add_path /home/$USER/.local/bin
+fish_add_path /home/$USER/node_modules/.bin
+fish_add_path /home/$USER/go/bin
+fish_add_path /home/$USER/.local/opt/go/bin
+fish_add_path /home/$USER/.local/share/aquaproj-aqua/bin
+fish_add_path /home/$USER/.krew/bin
+fish_add_path /home/$USER//bin
+
 {{ if (eq .chezmoi.os "linux") -}}
 fish_add_path -g /home/linuxbrew/.linuxbrew/bin/
 fish_add_path -g /home/linuxbrew/.linuxbrew/sbin/
