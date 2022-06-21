@@ -7,9 +7,7 @@ $git_status\
 $fill\
 $python \
 $status\
-$Kubens\
-$kubeStatus\
-$kubeNotReady\
+$custom\
 $talos\
 $cmd_duration\
 $line_break\
@@ -112,5 +110,13 @@ command = "kubectl get nodes --no-headers | awk '$2~\"NotReady\" {printf \"%s%s\
 when = "test \"$(kubectl get nodes --no-headers | awk '{print $2}' | uniq)\" != \"Ready\""
 symbol = "戀"
 style = "red"
+format = '\[[$symbol $output]($style)\] '
+shell = ["bash", "--noprofile", "--norc"]
+
+[custom.wakatime]
+command = "wakatime-cli --today"
+when = "test \"$(wakatime-cli --today)\" != \"\""
+style = "yellow"
+symbol = "元"
 format = '\[[$symbol $output]($style)\] '
 shell = ["bash", "--noprofile", "--norc"]

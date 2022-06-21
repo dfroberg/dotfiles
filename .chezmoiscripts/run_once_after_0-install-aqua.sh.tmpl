@@ -2,6 +2,7 @@
 #!/bin/bash
 
 set -eufo pipefail
+echo -e "\033[0;32m>>>>> Begin Setting Up Aqua <<<<<\033[0m"
 
 # renovate: depName=aquaproj/aqua datasource=github-releases
 current_aqua_version=v1.11.0
@@ -16,4 +17,5 @@ fi
 # .config/aqua.yaml hash: {{ include "dot_config/aqua.yaml.tmpl" | sha256sum }}
 aqua install -a
 
+echo -e "\033[0;32m>>>>> Finish Setting Up Aqua <<<<<\033[0m"
 {{ end -}}

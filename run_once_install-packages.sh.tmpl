@@ -9,82 +9,28 @@ sudo apt install -y pass git fd-find fzf zoxide curl
 curl -sS https://webinstall.dev/webi | bash
 curl -sS https://webinstall.dev/keypairs | bash
 
-# Starship
-curl -sS https://starship.rs/install.sh | sh
 # WakaTime
 # python3 -c "$(wget -q -O - https://raw.githubusercontent.com/wakatime/vim-wakatime/master/scripts/install_cli.py)"
 # Brew packages
 export PATH=$PATH:/home/linuxbrew/.linuxbrew/bin/
 export PATH=$PATH:/home/linuxbrew/.linuxbrew/sbin/
-brew install direnv
-brew install gh
-brew install bat
-brew install kubectl
-brew install kubectx
-brew install kustomize
-brew install fluxcd/tap/flux
-brew install helm@2
-brew install derailed/k9s/k9s
-brew install aws-vault
 brew install awscli
-brew install eksctl
-brew install ripgrep
-brew install exa
 brew install shellcheck
 brew install shfmt
 brew install yamllint
-brew install sops
-brew install yq
-brew install jq
 brew install xz
 brew install tmux
 brew install gcc
 brew install fisher
-brew install go
-brew install go-task/tap/go-task
 brew install wakatime-cli
-brew install pulumi
-#brew install terraform
-brew install tfenv
-tfenv install latest:^1.2.3
-tfenv use latest:^1.2.3
 brew install ansible
 brew install clusterctl
-brew tap siderolabs/talos
-
-# Add aditional modules
-export PATH="/home/$USER/.local/opt/go/bin:$PATH"
-export PATH="/home/$USER/go/bin:$PATH"
-go install golang.org/x/tools/gopls@latest
 echo -e "\033[0;32m>>>>> End Setting Up Custom Packages <<<<<\033[0m"
 # MACs ##########################################################################
 {{ else if eq .chezmoi.os "darwin" -}}
 #!/bin/sh
+echo -e "\033[0;32m>>>>> Begin Setting Up Custom Packages <<<<<\033[0m"
 ulimit -n 8192
-brew install direnv
-brew install gh
-brew install bat
-brew install ripgrep pass aws-vault awscli
-brew install go-task/tap/go-task
-brew install kubectl
-brew install kubectx
-brew install kustomize
-brew install fluxcd/tap/flux
-brew install helm@2
-brew install derailed/k9s/k9s
-#brew install terraform
-brew install tfenv
-tfenv install latest:^1.2.3
-tfenv use latest:^1.2.3
-brew install ansible
-brew install yq
-brew install xz
-brew install shellcheck
-brew install shfmt
-brew install yamllint
-brew install clusterctl
-brew tap siderolabs/talos
-brew install --cask --no-quarantine talosctl
 
-
+echo -e "\033[0;32m>>>>> End Setting Up Custom Packages <<<<<\033[0m"
 {{ end -}}
