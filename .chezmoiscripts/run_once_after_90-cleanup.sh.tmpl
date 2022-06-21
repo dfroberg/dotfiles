@@ -1,6 +1,6 @@
 #!/bin/bash
 
-echo -e "\033[0;32m>>>>> Begin Setting Up Fish Completions <<<<<\033[0m"
+echo -e "\033[0;32m>>>>> Begin Cleanup <<<<<\033[0m"
 
 # This script will ensure that I fixes changes I have made in the past
 # For example, I used to install stuffs in /usr/local/bin but now I'm not anymore
@@ -25,23 +25,23 @@ function not_needed_executable () {
   fi
 }
 
-not_needed_executable "kubectl" "{{ .chezmoi.homeDir }}/.local/bin"
-not_needed_executable "flux" "{{ .chezmoi.homeDir }}/.local/bin"
-not_needed_executable "kustomize" "/usr/local/bin"
-not_needed_executable "sops" "/usr/local/bin"
-not_needed_executable "fzf" "/usr/local/bin"
-not_needed_executable "starship" "/usr/local/bin"
-not_needed_executable "zoxide" "/usr/local/bin"
-not_needed_executable "rg" "/usr/local/bin"
-not_needed_executable "fd" "/usr/local/bin"
-not_needed_executable "bat" "/usr/local/bin"
-not_needed_executable "age" "/usr/local/bin"
-not_needed_executable "age-keygen" "/usr/local/bin"
-not_needed_executable "chezmoi" "{{ .chezmoi.homeDir }}/.local/bin"
+#not_needed_executable "kubectl" "{{ .chezmoi.homeDir }}/.local/bin"
+#not_needed_executable "flux" "{{ .chezmoi.homeDir }}/.local/bin"
+#not_needed_executable "kustomize" "/usr/local/bin"
+#not_needed_executable "sops" "/usr/local/bin"
+#not_needed_executable "fzf" "/usr/local/bin"
+#not_needed_executable "starship" "/usr/local/bin"
+#not_needed_executable "zoxide" "/usr/local/bin"
+#not_needed_executable "rg" "/usr/local/bin"
+#not_needed_executable "fd" "/usr/local/bin"
+#not_needed_executable "bat" "/usr/local/bin"
+#not_needed_executable "age" "/usr/local/bin"
+#not_needed_executable "age-keygen" "/usr/local/bin"
+#not_needed_executable "chezmoi" "{{ .chezmoi.homeDir }}/.local/bin"
 
 if [ "$(command -v brew)" ]; then
-  echo "uninstalling brew"
-  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/uninstall.sh)"
+#  echo "uninstalling brew"
+#  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/uninstall.sh)"
 fi
 
-echo -e "\033[0;32m>>>>> Finish Setting Fish Completions <<<<<\033[0m"
+echo -e "\033[0;32m>>>>> Finish Cleanup <<<<<\033[0m"

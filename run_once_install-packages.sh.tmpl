@@ -5,6 +5,9 @@ echo -e "\033[0;32m>>>>> Begin Setting Up Custom Packages <<<<<\033[0m"
 ulimit -u 8192
 # Global
 sudo apt install -y pass git fd-find fzf zoxide curl
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+export PATH=$PATH:/home/linuxbrew/.linuxbrew/bin/
+export PATH=$PATH:/home/linuxbrew/.linuxbrew/sbin/
 # Local
 curl -sS https://webinstall.dev/webi | bash
 curl -sS https://webinstall.dev/keypairs | bash
@@ -12,8 +15,6 @@ curl -sS https://webinstall.dev/keypairs | bash
 # WakaTime
 # python3 -c "$(wget -q -O - https://raw.githubusercontent.com/wakatime/vim-wakatime/master/scripts/install_cli.py)"
 # Brew packages
-export PATH=$PATH:/home/linuxbrew/.linuxbrew/bin/
-export PATH=$PATH:/home/linuxbrew/.linuxbrew/sbin/
 brew install awscli
 brew install shellcheck
 brew install shfmt
