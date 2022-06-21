@@ -26,6 +26,11 @@ brew install fisher
 brew install wakatime-cli
 brew install ansible
 brew install clusterctl
+# Add aditional modules
+export PATH="/home/$USER/.local/opt/go/bin:$PATH"
+export PATH="/home/$USER/go/bin:$PATH"
+go install golang.org/x/tools/gopls@latest
+
 echo -e "\033[0;32m>>>>> End Setting Up Custom Packages <<<<<\033[0m"
 # MACs ##########################################################################
 {{ else if eq .chezmoi.os "darwin" -}}
