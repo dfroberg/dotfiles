@@ -39,9 +39,9 @@ function not_needed_executable () {
 #not_needed_executable "age-keygen" "/usr/local/bin"
 #not_needed_executable "chezmoi" "{{ .chezmoi.homeDir }}/.local/bin"
 
-if [ "$(command -v brew)" ]; then
+#if [ "$(command -v brew)" ]; then
 #  echo "uninstalling brew"
 #  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/uninstall.sh)"
-fi
+#fi
 
 echo -e "\033[0;32m>>>>> Finish Cleanup <<<<<\033[0m"
