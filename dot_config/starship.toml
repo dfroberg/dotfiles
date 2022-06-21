@@ -114,8 +114,8 @@ format = '\[[$symbol $output]($style)\] '
 shell = ["bash", "--noprofile", "--norc"]
 
 [custom.wakatime]
-command = "wakatime-cli --today"
-when = "test \"$(wakatime-cli --today)\" != \"\""
+command = "cat .wakatime-out"
+when = "test \"$(cat .wakatime-out)\" != \"\""
 style = "yellow"
 symbol = "元"
 format = '\[[$symbol $output]($style)\] '
