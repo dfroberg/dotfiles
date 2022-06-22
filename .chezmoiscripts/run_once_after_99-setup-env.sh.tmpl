@@ -4,7 +4,10 @@
 set -eufo pipefail
 echo -e "\033[0;32m>>>>> Begin Setting Up Environment <<<<<\033[0m"
 export PATH="/home/linuxbrew/.linuxbrew/sbin:/home/linuxbrew/.linuxbrew/bin:/home/$USER/go/bin:/home/$USER/.local/opt/go/bin:/home/$USER/.local/share/aquaproj-aqua/bin:/home/$USER/.local/bin:$PATH"
+# Default Terraform to Use
 tfenv install latest:^1.2.3
 tfenv use latest:^1.2.3
+# Setup CronJobs
+(crontab -l 2>/dev/null || true; cat {{ .chezmoi.homeDir }}/.config/.cronjobs_user) | crontab -
 echo -e "\033[0;32m>>>>> Finish Setting Up Environment <<<<<\033[0m"
 {{ end -}}

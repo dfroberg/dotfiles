@@ -91,15 +91,15 @@ shell = ["bash", "--noprofile", "--norc"]
 
 [custom.kubens]
 command = "kubens --current"
-when = "test -f ~/.kube/config && test -x $(which kubens)"
+when = "(test -f ~/.kube/config || test -f $PWD/.kubeconfig ) && test -x $(which kubens)"
 symbol = ""
 style = "green"
 format = '\[[$symbol $output]($style)\] '
 shell = ["bash", "--noprofile", "--norc"]
 
 [custom.kubeStatus]
-command = "kubectl get nodes --no-headers | awk '$2 ~ /^Ready/ { ready++ } END { print ready\"/\"NR }'"
-when = "test -f ~/.kubeconfig"
+command = "cat ~/.config/prompt_kgnrn.tmp"
+when = "(test -f ~/.kube/config || test -f $PWD/.kubeconfig )"
 symbol = "歷"
 style = "cyan"
 format = '\[[$symbol $output]($style)\] '
@@ -107,7 +107,7 @@ shell = ["bash", "--noprofile", "--norc"]
 
 [custom.kubeNotReady]
 command = "cat ~/.config/prompt_kgnr.tmp"
-when = "test \"$(cat ~/.config/prompt_kgnr.tmp | awk '{print $2}' | uniq)\" != \"Ready\""
+when = "test \"$(cat ~/.config/prompt_kgnr.tmp)\" != \"Ready\""
 symbol = "戀"
 style = "red"
 format = '\[[$symbol $output]($style)\] '

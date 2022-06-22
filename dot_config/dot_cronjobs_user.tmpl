@@ -1,0 +1,7 @@
+{{-   if not .headless }}
+*/1 * * * * {{ .chezmoi.homeDir }}/.local/bin/wakatime-cli --today > {{ .chezmoi.homeDir }}/.config/wakatime.tmp
+{{-   end }}
+{{-   if .kubernetes }}
+*/1 * * * * {{ .chezmoi.homeDir }}/.local/share/aquaproj-aqua/bin/kubectl get nodes --no-headers | awk '{print $2}' | uniq > {{ .chezmoi.homeDir }}/.config/prompt_kgnr.tmp
+*/1 * * * * {{ .chezmoi.homeDir }}/.local/share/aquaproj-aqua/bin/kubectl get nodes --no-headers | awk '$2 ~ /^Ready/ { ready++ } END { print ready\"/\"NR }' > {{ .chezmoi.homeDir }}/.config/prompt_kgnrn.tmp
+{{-   end }}
