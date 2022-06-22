@@ -3,6 +3,7 @@
 
 set -eufo pipefail
 echo -e "\033[0;32m>>>>> Begin Setting Up Environment <<<<<\033[0m"
+export PATH="/home/linuxbrew/.linuxbrew/sbin:/home/linuxbrew/.linuxbrew/bin:/home/$USER/go/bin:/home/$USER/.local/opt/go/bin:/home/$USER/.local/share/aquaproj-aqua/bin:/home/$USER/.local/bin:$PATH"
 tfenv install latest:^1.2.3
 tfenv use latest:^1.2.3
 echo -e "\033[0;32m>>>>> Finish Setting Up Environment <<<<<\033[0m"

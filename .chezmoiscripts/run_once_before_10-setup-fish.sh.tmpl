@@ -3,6 +3,7 @@
 set -eufo pipefail
 
 echo -e "\0033[0;32m>>>>> Begin Setting Up Fish Shell <<<<<\033[0m"
+export PATH="/home/linuxbrew/.linuxbrew/sbin:/home/linuxbrew/.linuxbrew/bin:/home/$USER/go/bin:/home/$USER/.local/opt/go/bin:/home/$USER/.local/share/aquaproj-aqua/bin:/home/$USER/.local/bin:$PATH"
 
 # Installing fish
 {{   if (eq .chezmoi.osRelease.id "debian" "ubuntu") -}}

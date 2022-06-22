@@ -6,8 +6,7 @@ ulimit -u 8192
 # Global
 sudo apt install -y pass git fd-find fzf zoxide curl wget gnome-keyring sway dbus-x11 dnsutils
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-export PATH=$PATH:/home/linuxbrew/.linuxbrew/bin/
-export PATH=$PATH:/home/linuxbrew/.linuxbrew/sbin/
+export PATH="/home/linuxbrew/.linuxbrew/sbin:/home/linuxbrew/.linuxbrew/bin:/home/$USER/go/bin:/home/$USER/.local/opt/go/bin:/home/$USER/.local/share/aquaproj-aqua/bin:/home/$USER/.local/bin:$PATH"
 # Local
 curl -sS https://webinstall.dev/webi | bash
 curl -sS https://webinstall.dev/keypairs | bash
@@ -28,8 +27,6 @@ brew install ansible
 brew install clusterctl
 brew install neovim
 # Add aditional modules
-export PATH="/home/$USER/.local/opt/go/bin:$PATH"
-export PATH="/home/$USER/go/bin:$PATH"
 go install golang.org/x/tools/gopls@latest
 
 echo -e "\033[0;32m>>>>> End Setting Up Custom Packages <<<<<\033[0m"
