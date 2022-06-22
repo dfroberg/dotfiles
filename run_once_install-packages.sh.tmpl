@@ -28,6 +28,10 @@ brew install clusterctl
 brew install neovim
 # Add aditional modules
 go install golang.org/x/tools/gopls@latest
+wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+sudo apt -y install ./google-chrome-stable_current_amd64.deb
+rm ./google-chrome-stable_current_amd64.deb
+google-chrome --version
 
 echo -e "\033[0;32m>>>>> End Setting Up Custom Packages <<<<<\033[0m"
 # MACs ##########################################################################
