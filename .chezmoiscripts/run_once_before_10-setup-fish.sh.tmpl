@@ -39,7 +39,7 @@ fi
 # Set fish as default shell
 if [ $SHELL != $(which fish) ]; then
   echo "Changing default shell to fish"
-  chsh -s $(which fish)
+  chsh -s /usr/bin/fish
 fi
 
 echo -e "\0033[0;32m>>>>> Finish Setting Up Fish Shell <<<<<\033[0m"
