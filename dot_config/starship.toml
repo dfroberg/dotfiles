@@ -89,6 +89,14 @@ style = "yellow"
 format = '\[[$symbol $output]($style)\] '
 shell = ["bash", "--noprofile", "--norc"]
 
+[custom.kubectx]
+command = "kubectx --current"
+when = "(test -f ~/.kube/config || test -f $PWD/.kubeconfig ) && test -x $(which kubectx)"
+symbol = ""
+style = "green"
+format = '\[[$symbol $output]($style)\] '
+shell = ["bash", "--noprofile", "--norc"]
+
 [custom.kubens]
 command = "kubens --current"
 when = "(test -f ~/.kube/config || test -f $PWD/.kubeconfig ) && test -x $(which kubens)"
@@ -105,9 +113,17 @@ style = "cyan"
 format = '\[[$symbol $output]($style)\] '
 shell = ["bash", "--noprofile", "--norc"]
 
-[custom.kubeNotReady]
+[custom.kubeReady]
 command = "cat ~/.config/prompt_kgnr.tmp"
 when = "test \"$(cat ~/.config/prompt_kgnr.tmp)\" != \"Ready\""
+symbol = "戀"
+style = "green"
+format = '\[[$symbol $output]($style)\] '
+shell = ["bash", "--noprofile", "--norc"]
+
+[custom.kubeNotReady]
+command = "cat ~/.config/prompt_kgnnotready.tmp"
+when = "test \"$(cat ~/.config/prompt_kgnnotready.tmp)\" != \"\""
 symbol = "戀"
 style = "red"
 format = '\[[$symbol $output]($style)\] '
