@@ -9,7 +9,5 @@ fish_add_path /home/$USER//bin
 {{ if (eq .chezmoi.os "linux") -}}
 fish_add_path -g /home/linuxbrew/.linuxbrew/bin/
 fish_add_path -g /home/linuxbrew/.linuxbrew/sbin/
-{{ end -}}
-{{ if eq .chezmoi.hostname "taurus22" -}}
 fish_add_path /mnt/c/Users/danny/AppData/Local/Programs/'Microsoft VS Code'/bin
 {{ end -}}
