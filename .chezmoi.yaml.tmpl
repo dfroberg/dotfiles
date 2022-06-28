@@ -9,7 +9,7 @@
 {{- $agekey := false -}}{{/* true if this machine has agekey to decrypt secret */}}
 
 {{- $hostname := .chezmoi.hostname -}}
-{{- if eq $hostname "taurus22" -}}
+{{ if eq .chezmoi.hostname "taurus22" "taurus" "taurus20" "taurus-wsl" -}}
 {{-   $headless = false -}}
 {{-   $kubernetes = true -}}
 {{-   $i3wm = false -}}
