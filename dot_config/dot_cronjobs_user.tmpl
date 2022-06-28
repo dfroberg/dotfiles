@@ -1,6 +1,6 @@
 # BEGIN
 {{-   if not .headless }}
-* * * * * /home/linuxbrew/.linuxbrew/bin/wakatime-cli --today | sed "s/ hrs/h/g" | sed "s/ mins/m/g" | sed "s/Browsing/Research/g" > {{ .chezmoi.homeDir }}/.config/wakatime.tmp
+* * * * * /home/linuxbrew/.linuxbrew/bin/wakatime-cli --today | sed "s/ hrs/h/g" | sed "s/ hr/h/g" | sed "s/ mins/m/g" | sed "s/Browsing/Research/g" > {{ .chezmoi.homeDir }}/.config/wakatime.tmp
 {{-   end }}
 {{-   if .kubernetes }}
 * * * * * {{ .chezmoi.homeDir }}/.local/share/aquaproj-aqua/bin/kubectl get nodes --no-headers | awk '{print $2}' | uniq > {{ .chezmoi.homeDir }}/.config/prompt_kgnr.tmp
