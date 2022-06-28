@@ -5,5 +5,4 @@ export AWS_VAULT_PASS_PASSWORD_STORE_DIR=/home/$USER/.password-store
 export AWS_VAULT_PROMPT=pass
 export AWS_VAULT_PASS_PREFIX=aws-vault
 export GPG_TTY=$(tty)
-export KUBECONFIG=$(expand_path ./kubeconfig)
 export DOCKER_HOST=tcp://192.168.3.179:23750
