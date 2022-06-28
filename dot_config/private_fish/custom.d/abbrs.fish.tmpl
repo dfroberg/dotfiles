@@ -3,6 +3,11 @@ if type -q aws
   abbr eksl 'aws sts get-caller-identity --profile infura-prod'
 end
 
+# 1pass op
+if type -q op
+  abbr opl 'eval (op signing)'
+end
+
 # direnv allow
 if type -q direnv
   abbr da 'direnv allow'
