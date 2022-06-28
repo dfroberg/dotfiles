@@ -13,6 +13,19 @@ if type -q direnv
   abbr da 'direnv allow'
 end
 
+# kubectx
+if type -q kubectx
+  abbr kcx 'kubectx'
+  abbr kcxd 'kubectx dev'
+  abbr kcxp 'kubectx prod'
+  abbr kcxs 'kubectx admin@sidero-cluster'
+end
+
+# kubens
+if type -q kubens
+  abbr kns 'kubens'
+end
+
 # kubectl
 if type -q kubectl
   abbr k 'kubectl'
