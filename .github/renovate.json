@@ -1,5 +1,6 @@
 {
     "enabled": true,
+    "renovateFork": true,
     "semanticCommits": "enabled",
     "labels": ["renovatebot"],
     "commitBody": "Signed-Off-by: Danny Froberg <danny@froberg.org>",
