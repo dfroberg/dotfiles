@@ -1,10 +1,8 @@
 # BEGIN
 {{-   if not .headless }}
-* * * * * /home/linuxbrew/.linuxbrew/bin/wakatime-cli --today | sed "s/ hrs/h/g" | sed "s/ hr/h/g" | sed "s/ mins/m/g" | sed "s/Browsing/Research/g" > {{ .chezmoi.homeDir }}/.config/wakatime.tmp
+*/1 * * * * /home/linuxbrew/.linuxbrew/bin/wakatime-cli --today | sed "s/ hrs/h/g" | sed "s/ hr/h/g" | sed "s/ mins/m/g" | sed "s/ secs/s/g" | sed "s/Browsing/Research/g" > {{ .chezmoi.homeDir }}/.config/wakatime.tmp
 {{-   end }}
 {{-   if .kubernetes }}
-* * * * * {{ .chezmoi.homeDir }}/.local/share/aquaproj-aqua/bin/kubectl get nodes --no-headers | awk '{print $2}' | uniq > {{ .chezmoi.homeDir }}/.config/prompt_kgnr.tmp
-* * * * * {{ .chezmoi.homeDir }}/.local/share/aquaproj-aqua/bin/kubectl get nodes --no-headers | awk '$2 ~ /^Ready/ { ready++ } END { print ready "/"NR }' > {{ .chezmoi.homeDir }}/.config/prompt_kgnrn.tmp
-* * * * * {{ .chezmoi.homeDir }}/.local/share/aquaproj-aqua/bin/kubectl get nodes --no-headers | awk '$2~"NotReady|Ready,SchedulingDisabled" {printf "%s%s",sep,$1; sep=", "} END{print ""}' | wc -w > {{ .chezmoi.homeDir }}/.config/prompt_kgnnotready.tmp
+*/1 * * * * {{ .chezmoi.homeDir }}/.local/share/aquaproj-aqua/bin/kubectl get nodes --no-headers | awk '$2 ~ /^Ready/ { ready++ } END { print ready "/"NR }' > {{ .chezmoi.homeDir }}/.config/prompt_kgnrn.tmp
 {{-   end }}
 # EOF

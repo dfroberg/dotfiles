@@ -105,6 +105,15 @@ style = "green"
 format = '\[[$symbol $output]($style)\] '
 shell = ["bash", "--noprofile", "--norc"]
 
+[custom.kubeStatus]
+command = "cat ~/.config/prompt_kgnrn.tmp"
+when = "(test -f ~/.kube/config || test -f $PWD/.kubeconfig )"
+symbol = "歷"
+style = "cyan"
+format = '\[[$symbol $output]($style)\] '
+shell = ["bash", "--noprofile", "--norc"]
+
+
 [custom.wakatime]
 command = "cat ~/.config/wakatime.tmp"
 when = "test \"$(cat ~/.config/wakatime.tmp)\" != \"\""
