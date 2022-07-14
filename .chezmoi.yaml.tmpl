@@ -42,8 +42,13 @@
 {{- if $interactive -}}
 {{-   writeToStdout "💡 Tip: you can re-enter your data with `chezmoi init --data=false`.\n" -}}
 {{- end -}}
+{{- $osid := .chezmoi.os -}}
+{{- if hasKey .chezmoi.osRelease "id" -}}
+{{-   $osid = printf "%s-%s" .chezmoi.os .chezmoi.osRelease.id -}}
+{{- end -}}
 
-data:
+data
+  osid: {{ $osid | quote }}
   headless: {{ $headless }}
   kubernetes: {{ $kubernetes }}
   i3wm: {{ $i3wm }}

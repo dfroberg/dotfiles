@@ -40,6 +40,22 @@ echo -e "\033[0;32m>>>>> End Setting Up Custom Packages <<<<<\033[0m"
 #!/bin/sh
 echo -e "\033[0;32m>>>>> Begin Setting Up Custom Packages <<<<<\033[0m"
 ulimit -n 8192
+/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+brew -v
+# Brew packages
+brew install awscli
+brew install shellcheck
+brew install shfmt
+brew install yamllint
+brew install xz
+brew install tmux
+brew install gcc
+brew install fisher
+brew install wakatime-cli
+brew install ansible
+brew install clusterctl
+brew install neovim
+brew install act
 
 echo -e "\033[0;32m>>>>> End Setting Up Custom Packages <<<<<\033[0m"
 {{ end -}}
