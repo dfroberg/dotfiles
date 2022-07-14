@@ -6,7 +6,7 @@ echo -e "\0033[0;32m>>>>> Begin Setting Up Fish Shell <<<<<\033[0m"
 export PATH="/home/linuxbrew/.linuxbrew/sbin:/home/linuxbrew/.linuxbrew/bin:/home/$USER/go/bin:/home/$USER/.local/opt/go/bin:/home/$USER/.local/share/aquaproj-aqua/bin:/home/$USER/.local/bin:$PATH"
 
 # Installing fish
-{{   if (eq osid "linux-debian" "linux-ubuntu") -}}
+{{   if (eq .osid "linux-debian" "linux-ubuntu") -}}
 ppa_repo_source=fish-shell/release-3
 if ! $(apt-cache policy | grep http | awk '{print $2}' | sort -u | grep $ppa_repo_source &> /dev/null); then
   echo "adding ppa:$ppa_repo_source repository to apt"
@@ -25,7 +25,7 @@ if ! $(dpkg-query -W -f='installed' fish &> /dev/null); then
 {{     end -}}
 fi
 
-{{   else if eq osid "linux-arch" -}}
+{{   else if eq .osid "linux-arch" -}}
 if [ "$(pacman -Qq fish 2> /dev/null)" != fish ]; then
   echo "installing fish"
 {{     if ne .chezmoi.username "root" -}}

@@ -12,13 +12,13 @@ npm install @fsouza/prettierd
 npm install markdownlint-cli
 npm install write-good
 
-{{   if (eq osid "linux-arch") -}}
+{{   if (eq .osid "linux-arch") -}}
 {{     if ne .chezmoi.username "root" -}}
 sudo pacman -S --noconfirm shfmt ansible-lint shellcheck yamllint
 {{     else -}}
 pacman -S --noconfirm shfmt ansible-lint shellcheck yamllint
 {{     end -}}
-{{   else if (eq osid "linux-ubuntu" "linux-debian") -}}
+{{   else if (eq .osid "linux-ubuntu" "linux-debian") -}}
 {{     if ne .chezmoi.username "root" -}}
 #sudo snap install shfmt
 #sudo apt install -y ansible-lint shellcheck yamllint
