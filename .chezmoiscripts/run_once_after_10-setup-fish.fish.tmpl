@@ -1,3 +1,4 @@
+{{ if eq .chezmoi.os "linux" -}}
 #!/usr/bin/fish
 
 echo -e "\033[0;32m>>>>> Begin Setting Up Fish shell <<<<<\033[0m"
@@ -13,3 +14,15 @@ end
 fisher update
 
 echo -e "\033[0;32m>>>>> Finish Setting Up Fish shell <<<<<\033[0m"
+# MACs ##########################################################################
+{{ else if eq .chezmoi.os "darwin" -}}
+#!/opt/homebrew/bin/fish
+
+echo -e "\033[0;32m>>>>> Begin Setting Up Fish shell <<<<<\033[0m"
+
+# This script will run whenever I added something to .config/fish/fish_plugins
+# .config/fish/fish_plugins hash: {{ include "dot_config/private_fish/fish_plugins.tmpl" | sha256sum }}
+fisher update
+
+echo -e "\033[0;32m>>>>> Finish Setting Up Fish shell <<<<<\033[0m"
+{{ end -}}
