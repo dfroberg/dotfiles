@@ -42,6 +42,7 @@ echo -e "\033[0;32m>>>>> Begin Setting Up Custom Packages <<<<<\033[0m"
 ulimit -n 8192
 /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 brew -v
+export PATH=$PATH:/opt/homebrew/bin
 # Brew packages
 brew install --cask 1password/tap/1password-cli
 brew install awscli
