@@ -8,6 +8,7 @@ export GPG_TTY=$(tty)
 export DOCKER_HOST=tcp://192.168.3.179:23750
 export AWS_VAULT_PASS_PASSWORD_STORE_DIR=/home/$USER/.password-store
 {{ else if eq .chezmoi.os "darwin" }}
-export DOCKER_HOST=tcp://192.168.3.179:23750
+export DOCKER_HOST=tcp://100.117.131.49:23750
+export DISPLAY=localhost:0.0
 export AWS_VAULT_PASS_PASSWORD_STORE_DIR=/Users/$USER/.password-store
 {{ end -}}
