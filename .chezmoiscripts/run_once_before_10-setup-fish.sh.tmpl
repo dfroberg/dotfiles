@@ -43,4 +43,16 @@ if [ $SHELL != $(which fish) ]; then
 fi
 
 echo -e "\0033[0;32m>>>>> Finish Setting Up Fish Shell <<<<<\033[0m"
+
+{{ else if eq .chezmoi.os "darwin" -}}
+#!/opt/homebrew/bin/fish
+echo -e "\0033[0;32m>>>>> Begin Setting Up Fish Shell <<<<<\033[0m"
+
+# Set fish as default shell
+if [ $SHELL != $(which fish) ]; then
+  echo "Changing default shell to fish"
+  chsh -s /opt/homebrew/bin/fish
+fi
+
+echo -e "\0033[0;32m>>>>> Finish Setting Up Fish Shell <<<<<\033[0m"
 {{ end -}}

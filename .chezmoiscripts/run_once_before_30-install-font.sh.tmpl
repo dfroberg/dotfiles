@@ -61,4 +61,12 @@ if [ $updated_counter -gt 0 ]; then
   fc-cache -vf "$font_dir"
 fi
 echo -e "\033[0;32m>>>>> Finish Setting Up Font <<<<<\033[0m"
+
+{{ else if eq .chezmoi.os "darwin" -}}
+#!/opt/homebrew/bin/fish
+echo -e "\0033[0;32m>>>>> Begin Setting Up Fonts <<<<<\033[0m"
+git clone git@github.com:ryanoasis/nerd-fonts.git --depth=1
+cd nerd-fonts; ./install.sh
+rm -rf -- nerd-fonts
+echo -e "\033[0;32m>>>>> Finish Setting Up Font <<<<<\033[0m"
 {{ end -}}
