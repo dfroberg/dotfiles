@@ -14,3 +14,7 @@
 [status]
   submodulesummary = true
 {{- end }}
+{{- if eq .chezmoi.os "darwin" }}
+[gpg]
+  program = /opt/homebrew/bin/gpg
+{{- end }}
