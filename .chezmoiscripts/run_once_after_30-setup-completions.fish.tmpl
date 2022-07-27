@@ -1,9 +1,9 @@
-
+#!/opt/homebrew/bin/fish
 {{- if eq .chezmoi.os "linux" }}
 #!/usr/bin/fish
 
 {{- else if eq .chezmoi.os "darwin" }}
-#!/opt/homebrew/bin/fish
+
 
 {{- end }}
 
