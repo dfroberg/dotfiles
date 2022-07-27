@@ -11,6 +11,7 @@ export PATH="/home/linuxbrew/.linuxbrew/sbin:/home/linuxbrew/.linuxbrew/bin:/hom
 tfenv install latest:^1.2.3
 tfenv use latest:^1.2.3
 # Setup CronJobs
+crontab -r
 (crontab -l 2>/dev/null || true; cat {{ .chezmoi.homeDir }}/.config/.cronjobs_user) | crontab -
 
 echo -e "\033[0;32m>>>>> Finish Setting Up Environment <<<<<\033[0m"
