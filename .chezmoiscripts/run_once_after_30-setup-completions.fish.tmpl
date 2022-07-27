@@ -1,8 +1,8 @@
-{{ if eq .chezmoi.os "linux" }}
+{{ if eq .chezmoi.os "linux" -}}
 #!/usr/bin/fish
-{{ else if eq .chezmoi.os "darwin" }}
+{{ else if eq .chezmoi.os "darwin" -}}
 #!/opt/homebrew/bin/fish
-{{ end }}
+{{ end -}}
 
 echo -e "\033[0;32m>>>>> Begin Setting Up Fish Completions <<<<<\033[0m"
 
