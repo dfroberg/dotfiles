@@ -1,6 +1,10 @@
 # BEGIN
 {{-   if not .headless }}
+{{ if (eq .chezmoi.os "linux") }}
 */1 * * * * /home/linuxbrew/.linuxbrew/bin/wakatime-cli --today | sed "s/ hrs/h/g" | sed "s/ hr/h/g" | sed "s/ mins/m/g" | sed "s/ secs/s/g" | sed "s/Browsing/Research/g" > {{ .chezmoi.homeDir }}/.config/wakatime.tmp
+{{ else if eq .chezmoi.os "darwin" }}
+*/1 * * * * /opt/homebrew/bin/wakatime-cli --today | sed "s/ hrs/h/g" | sed "s/ hr/h/g" | sed "s/ mins/m/g" | sed "s/ secs/s/g" | sed "s/Browsing/Research/g" > {{ .chezmoi.homeDir }}/.config/wakatime.tmp
+{{-   end }}
 {{-   end }}
 {{-   if .kubernetes }}
 */1 * * * * {{ .chezmoi.homeDir }}/.local/share/aquaproj-aqua/bin/kubectl get nodes --no-headers | awk '$2 ~ /^Ready/ { ready++ } END { print ready "/"NR }' > {{ .chezmoi.homeDir }}/.config/prompt_kgnrn.tmp
