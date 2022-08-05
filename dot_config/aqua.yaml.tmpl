@@ -2,8 +2,7 @@ registries:
   - type: standard
     ref: v2.26.0    # renovate: depName=aquaproj/aqua-registry
 packages:
-{{ if (eq .chezmoi.os "linux") -}}
-
+{{- if (eq .chezmoi.os "linux") }}
   - name: twpayne/chezmoi@v2.17.1
   - name: junegunn/fzf@0.30.0
   - name: starship/starship@v1.7.1
