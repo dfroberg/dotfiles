@@ -1,31 +1,3 @@
-local lsp_installer = require('nvim-lsp-installer')
-
--- List of LSP I want to be installed
-local requested_servers = {
-  'ansiblels',
-  'bashls',
-  'cssls',
-  'dockerls',
-  {{ if not .headless -}}
-  'gopls',
-  {{ end -}}
-  'jsonls',
-  'pyright',
-  'sumneko_lua',
-  'yamlls'
-}
-
--- Auto install requested LSP
-for _, name in ipairs(requested_servers) do
-  local server_available, requested_server = lsp_installer.get_server(name)
-  if server_available then
-    if not requested_server:is_installed() then
-      print("Installing " .. name)
-      requested_server:install()
-    end
-  end
-end
-
 -- Diagnostic looks
 vim.diagnostic.config {
   virtual_text = false,
@@ -47,123 +19,223 @@ vim.o.updatetime = 150
 vim.cmd([[autocmd CursorHold * lua vim.diagnostic.open_float(nil, { focusable = false })]])
 
 -- LSP Server Setup Goes Below
-local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
+require('mason').setup()
+require('mason-lspconfig').setup {
+  automatic_installation = true,
+  -- ui = {
+  --   check_outdated_servers_on_open = true
+  -- }
+}
+require('mason-tool-installer').setup {
+  ensure_installed = {
+    -- formatting
+    'prettierd',
+    'shfmt',
+
+    -- diagnostics
+    'markdownlint',
+    'shellcheck',
+    'write-good',
+    'yamllint',
+  },
+  auto_update = true,
+  run_on_start = true
+}
+
+local function get_client_capabilities()
+  local capabilities = vim.lsp.protocol.make_client_capabilities()
+
+  capabilities.textDocument.completion.completionItem.documentationFormat = { 'markdown', 'plaintext' }
+  capabilities.textDocument.completion.completionItem.snippetSupport = true
+  capabilities.textDocument.completion.completionItem.preselectSupport = true
+  capabilities.textDocument.completion.completionItem.insertReplaceSupport = true
+  capabilities.textDocument.completion.completionItem.labelDetailsSupport = true
+  capabilities.textDocument.completion.completionItem.deprecatedSupport = true
+  capabilities.textDocument.completion.completionItem.commitCharactersSupport = true
+  capabilities.textDocument.completion.completionItem.tagSupport = { valueSet = { 1 } }
+  capabilities.textDocument.completion.completionItem.resolveSupport = {
+    properties = {
+      'documentation',
+      'detail',
+      'additionalTextEdits',
+    },
+  }
+
+  return capabilities
+end
+
+local lspconfig = require('lspconfig')
+local capabilities = get_client_capabilities()
 local on_attach = function(_, bufnr)
   require 'lsp_signature'.on_attach()
   local keymap = vim.keymap
   local opts = { buffer = bufnr }
 
-  keymap.set('n', 'rn', vim.lsp.buf.rename, opts)
-  keymap.set('n', 'gd', vim.lsp.buf.definition, opts)
-  keymap.set('n', 'gD', vim.lsp.buf.declaration, opts)
-  keymap.set('n', 'gh', function() return require('utils').fix_buf_hover() end, opts)
-  keymap.set('n', 'gr', vim.lsp.buf.references, opts)
-  keymap.set('n', 'gi', vim.lsp.buf.implementation, opts)
+  keymap.set('n', 'rn', vim.lsp.buf.rename, { unpack(opts), desc = "Do LSP rename action" })
+  keymap.set('n', 'gd', vim.lsp.buf.definition, { unpack(opts), desc = "Do LSP get definition action" })
+  keymap.set('n', 'gD', vim.lsp.buf.declaration, { unpack(opts), desc = "Do LSP get declaration action" })
+  keymap.set('n', 'gh', function() return require('utils').fix_buf_hover() end, { unpack(opts), desc = "Do LSP hover action" })
+  keymap.set('n', 'gr', vim.lsp.buf.references, { unpack(opts), desc = "Do LSP get references action" })
+  keymap.set('n', 'gi', vim.lsp.buf.implementation, { unpack(opts), desc = "Do LSP get implementation action"})
 end
 
-local server_opts = {
-  -- ansiblels
-  ['ansiblels'] = function(opts)
-    opts.filetypes = { 'yaml.ansible' }
-  end,
+-- ansiblels
+lspconfig.ansiblels.setup {
+  capabilities = capabilities,
+  on_attach = on_attach,
+}
 
-  -- jsonls
-  ['jsonls'] = function(opts)
-    opts.settings = {
-      json = {
-        schemas = require('schemastore').json.schemas(),
-      }
+-- bashls
+lspconfig.bashls.setup {
+  capabilities = capabilities,
+  on_attach = on_attach,
+}
+
+-- cssls
+lspconfig.cssls.setup {
+  capabilities = capabilities,
+  on_attach = on_attach,
+}
+
+-- dockerls
+lspconfig.dockerls.setup {
+  capabilities = capabilities,
+  on_attach = on_attach,
+}
+
+{{ if not .headless -}}
+-- gopls
+lspconfig.gopls.setup {
+  capabilities = capabilities,
+  on_attach = on_attach,
+}
+{{ end -}}
+
+-- javascript
+lspconfig.tsserver.setup {
+  capabilities = capabilities,
+  on_attach = on_attach,
+}
+
+-- jsonls
+lspconfig.jsonls.setup {
+  capabilities = capabilities,
+  on_attach = on_attach,
+  settings = {
+    json = {
+      schemas = require('schemastore').json.schemas(),
     }
-  end,
+  }
+}
 
-  -- sumneko_lua
-  ['sumneko_lua'] = function(opts)
-    local runtime_path = vim.split(package.path, ';')
-    opts.settings = {
-      Lua = {
-        runtime = {
-          version = 'LuaJIT',
-          path = runtime_path,
-        },
-        diagnostics = {
-          globals = { 'vim' },
-        },
-        workspace = {
-          library = vim.api.nvim_get_runtime_file('', true),
-          preloadFileSize = 200,
-        },
-        telemetry = {
-          enable = false,
-        },
-      }
+-- pyright
+lspconfig.pyright.setup {
+  capabilities = capabilities,
+  on_attach = on_attach,
+}
+
+-- sumneko_lua
+lspconfig.sumneko_lua.setup {
+  capabilities = capabilities,
+  on_attach = on_attach,
+  settings = {
+    Lua = {
+      runtime = {
+        version = 'LuaJIT',
+      },
+      diagnostics = {
+        globals = { 'vim' },
+      },
+      workspace = {
+        library = vim.api.nvim_get_runtime_file('', true),
+        preloadFileSize = 200,
+      },
+      telemetry = {
+        enable = false,
+      },
     }
-  end,
+  }
+}
 
-  -- yamlls
-  ['yamlls'] = function(opts)
-    opts.settings = {
-      yaml = {
-        customTags = {
-          '!include_dir_list',
-          '!include_dir_named',
-          '!include_dir_merge_list',
-          '!include_dir_merge_named',
-          '!secret',
-          '!env_var',
+-- yamlls
+lspconfig.yamlls.setup {
+  capabilities = capabilities,
+  on_attach = on_attach,
+  settings = {
+    yaml = {
+      customTags = {
+        '!include_dir_list',
+        '!include_dir_named',
+        '!include_dir_merge_list',
+        '!include_dir_merge_named',
+        '!secret',
+        '!env_var',
+      },
+      schemas = {
+        kubernetes = {
+          '01-namespace.yaml',
+          'deployment.yaml',
+          'daemonset.yaml',
+          'statefulset.yaml',
+          'service.yaml',
+          'pv.yaml',
+          'pvc.yaml',
+          'configmap.yaml',
+          'secret.yaml',
+          'rbac.yaml',
+          'crd.yaml',
+          'storageclass.yaml',
+          'cronjob.yaml'
         },
-        schemas = {
-          kubernetes = {
-            '01-namespace.yaml',
-            'deployment.yaml',
-            'daemonset.yaml',
-            'statefulset.yaml',
-            'service.yaml',
-            'pv.yaml',
-            'pvc.yaml',
-            'configmap.yaml',
-            'secret.yaml',
-            'rbac.yaml',
-            'crd.yaml',
-            'storageclass.yaml',
-            'cronjob.yaml'
-          },
-          ['https://raw.githubusercontent.com/docker/compose/master/compose/config/compose_spec.json'] = {
-            'docker-compose.yml',
-            'docker-compose.yaml'
-          },
-          ['https://json.schemastore.org/github-workflow'] = {
-            '.github/workflows/**.yml',
-            '.github/workflows/**.yaml'
-          },
-          ['https://json.schemastore.org/github-actions'] = {
-            'action.yml',
-            'action.yaml'
-          },
-          ['https://json.schemastore.org/gitlab-ci'] = '.gitlab-ci.yml',
-          ['https://json.schemastore.org/kustomization'] = {
-            'kustomization.yml',
-            'kustomization.yaml'
-          },
-          ['https://json.schemastore.org/pre-commit-config'] = {
-            '.pre-commit-config.yml',
-            '.pre-commit-config.yaml',
-          }
+        ['https://raw.githubusercontent.com/docker/compose/master/compose/config/compose_spec.json'] = {
+          'docker-compose.yml',
+          'docker-compose.yaml'
+        },
+        ['https://json.schemastore.org/github-workflow'] = {
+          '.github/workflows/**.yml',
+          '.github/workflows/**.yaml'
+        },
+        ['https://json.schemastore.org/github-actions'] = {
+          'action.yml',
+          'action.yaml'
+        },
+        ['https://json.schemastore.org/gitlab-ci'] = '.gitlab-ci.yml',
+        ['https://json.schemastore.org/kustomization'] = {
+          'kustomization.yml',
+          'kustomization.yaml'
+        },
+        ['https://json.schemastore.org/pre-commit-config'] = {
+          '.pre-commit-config.yml',
+          '.pre-commit-config.yaml',
+        },
+        ['https://raw.githubusercontent.com/JJGadgets/flux2-schemas/main/helmrelease-helm-v2beta1.json'] = {
+          'helmrelease.yaml',
+          'helm-release.yaml'
         }
       }
     }
-  end,
+  }
 }
 
-lsp_installer.on_server_ready(function(server)
-  -- default options
-  local opts = {
-    on_attach = on_attach,
-    capabilities = capabilities,
-  }
+-- null-ls
+local null_ls = require('null-ls')
 
-  if server_opts[server.name] then
-    server_opts[server.name](opts)
-  end
-
-  server:setup(opts)
-end)
+null_ls.setup {
+  sources = {
+    null_ls.builtins.formatting.prettierd,
+    null_ls.builtins.formatting.shfmt.with {
+      extra_args = { '-i', '2', '-ci' }
+    },
+    null_ls.builtins.formatting.trim_newlines,
+    null_ls.builtins.formatting.trim_whitespace,
+    null_ls.builtins.diagnostics.ansiblelint.with {
+      filetypes = { 'yaml.ansible' }
+    },
+    null_ls.builtins.diagnostics.markdownlint,
+    null_ls.builtins.diagnostics.shellcheck,
+    null_ls.builtins.diagnostics.write_good,
+    null_ls.builtins.diagnostics.yamllint,
+    null_ls.builtins.code_actions.shellcheck,
+  },
+  diagnostics_format = '[#{c}] #{m} (#{s})'
+}

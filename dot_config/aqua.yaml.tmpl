@@ -1,29 +1,31 @@
 registries:
   - type: standard
-    ref: v2.26.0    # renovate: depName=aquaproj/aqua-registry
+    ref: v3.36.0    # renovate: depName=aquaproj/aqua-registry
 packages:
 {{- if (eq .chezmoi.os "linux") }}
-  - name: twpayne/chezmoi@v2.17.1
-  - name: junegunn/fzf@0.30.0
-  - name: starship/starship@v1.7.1
-  - name: ajeetdsouza/zoxide@v0.8.1
+  - name: twpayne/chezmoi@v2.20.0
+  - name: junegunn/fzf@0.32.1
+  - name: starship/starship@v1.10.2
+  - name: ajeetdsouza/zoxide@v0.8.2
   - name: BurntSushi/ripgrep@13.0.0
   - name: sharkdp/fd@v8.4.0
   - name: sharkdp/bat@v0.21.0
   - name: ogham/exa@v0.10.1
-  - name: blacknon/hwatch@0.3.6
-  - name: mikefarah/yq@v4.25.2
+  - name: blacknon/hwatch@0.3.7
+  - name: neovim/neovim@v0.7.2
+  - name: zellij-org/zellij@v0.31.3
+  - name: gohugoio/hugo@v0.101.0
+  - name: mikefarah/yq@v4.27.2
   - name: stedolan/jq@jq-1.6
-  - name: neovim/neovim@v0.7.0
-{{-   if .agekey }}
+  {{-   if .agekey }}
   - name: FiloSottile/age@v1.0.0
 {{-   end }}
 {{-   if not .headless }}
-  - name: golang/go@1.18.3
-  - name: cli/cli@v2.12.1
-  - name: go-task/task@v3.13.0
-  - name: direnv/direnv@v2.32.0
-  - name: goreleaser/goreleaser@v1.9.2
+  - name: golang/go@1.18.5
+  - name: cli/cli@v2.14.4
+  - name: go-task/task@v3.14.1
+  - name: direnv/direnv@v2.32.1
+  - name: goreleaser/goreleaser@v1.10.3
   - name: Songmu/goxz@v0.8.2
 #  - name: golang/tools/gopls@gopls/v0.8.4
   - name: terraform-docs/terraform-docs@v0.16.0
@@ -38,7 +40,7 @@ packages:
   - name: awslabs/git-secrets@1.3.0
 {{-   end }}
 {{-   if .kubernetes }}
-  - name: kubernetes/kubectl@v1.24.1
+  - name: kubernetes/kubectl@v1.24.4
   - name: ahmetb/kubectx@v0.9.4
   - name: ahmetb/kubens@v0.9.4
   - name: kubernetes-sigs/krew@v0.4.3
@@ -49,36 +51,38 @@ packages:
   - name: kubecost/kubectl-cost@v0.2.8
   - name: kastenhq/kubestr@v0.4.31
   - name: hidetatz/kubecolor@v0.0.20
-  - name: fluxcd/flux2@v0.31.3
-  - name: kubernetes-sigs/kustomize@kustomize/v4.5.5
+  - name: fluxcd/flux2@v0.32.0
+  - name: kubernetes-sigs/kustomize@kustomize/v4.5.7
   - name: mozilla/sops@v3.7.3
-  - name: helm/helm@v3.9.0
-  - name: siderolabs/talos@v1.2.0-alpha.0
-  - name: derailed/k9s@v0.25.18
+  - name: helm/helm@v3.9.3
+  - name: siderolabs/talos@v1.1.2
+  - name: derailed/k9s@v0.26.3
   - name: budimanjojo/talhelper@v1.2.3
 {{-   end }}
 {{ else if eq .chezmoi.os "darwin" }}
-  - name: twpayne/chezmoi@v2.17.1
-  - name: junegunn/fzf@0.30.0
-  - name: starship/starship@v1.7.1
-  - name: ajeetdsouza/zoxide@v0.8.1
+  - name: twpayne/chezmoi@v2.20.0
+  - name: junegunn/fzf@0.32.1
+  - name: starship/starship@v1.10.2
+  - name: ajeetdsouza/zoxide@v0.8.2
   - name: BurntSushi/ripgrep@13.0.0
   - name: sharkdp/fd@v8.4.0
   - name: sharkdp/bat@v0.21.0
   - name: ogham/exa@v0.10.1
-  - name: blacknon/hwatch@0.3.6
-  - name: mikefarah/yq@v4.25.2
+  - name: blacknon/hwatch@0.3.7
+  - name: neovim/neovim@v0.7.2
+  - name: zellij-org/zellij@v0.31.3
+  - name: gohugoio/hugo@v0.101.0
+  - name: mikefarah/yq@v4.27.2
   - name: stedolan/jq@jq-1.6
-  - name: neovim/neovim@v0.7.0
-{{-   if .agekey }}
+  {{-   if .agekey }}
   - name: FiloSottile/age@v1.0.0
 {{-   end }}
 {{-   if not .headless }}
-  - name: golang/go@1.18.3
-  - name: cli/cli@v2.12.1
-  - name: go-task/task@v3.13.0
-  - name: direnv/direnv@v2.32.0
-  - name: goreleaser/goreleaser@v1.9.2
+  - name: golang/go@1.18.5
+  - name: cli/cli@v2.14.4
+  - name: go-task/task@v3.14.1
+  - name: direnv/direnv@v2.32.1
+  - name: goreleaser/goreleaser@v1.10.3
   - name: Songmu/goxz@v0.8.2
 #  - name: golang/tools/gopls@gopls/v0.8.4
   - name: terraform-docs/terraform-docs@v0.16.0
@@ -93,7 +97,7 @@ packages:
   - name: awslabs/git-secrets@1.3.0
 {{-   end }}
 {{-   if .kubernetes }}
-  - name: kubernetes/kubectl@v1.24.1
+  - name: kubernetes/kubectl@v1.24.4
   - name: ahmetb/kubectx@v0.9.4
   - name: ahmetb/kubens@v0.9.4
   - name: kubernetes-sigs/krew@v0.4.3
@@ -104,12 +108,12 @@ packages:
   - name: kubecost/kubectl-cost@v0.2.8
   - name: kastenhq/kubestr@v0.4.31
   - name: hidetatz/kubecolor@v0.0.20
-  - name: fluxcd/flux2@v0.31.3
-  - name: kubernetes-sigs/kustomize@kustomize/v4.5.5
+  - name: fluxcd/flux2@v0.32.0
+  - name: kubernetes-sigs/kustomize@kustomize/v4.5.7
   - name: mozilla/sops@v3.7.3
-  - name: helm/helm@v3.9.0
-  - name: siderolabs/talos@v1.2.0-alpha.0
-  - name: derailed/k9s@v0.25.18
+  - name: helm/helm@v3.9.3
+  - name: siderolabs/talos@v1.1.2
+  - name: derailed/k9s@v0.26.3
   - name: budimanjojo/talhelper@v1.2.3
 {{-   end }}
 {{- end }}

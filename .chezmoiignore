@@ -3,6 +3,7 @@ LICENSE
 install.sh
 {{- if (and (eq .chezmoi.os "linux") (not .kubernetes)) }}
 .kube/config
+.talos/config
 .config/k9s/
 {{- end }}
 {{- if (and (eq .chezmoi.os "linux") (not .i3wm)) }}
@@ -23,4 +24,5 @@ install.sh
 {{- if .headless }}
 .config/alacritty/
 .config/kitty/
+.config/wezterm/
 {{- end }}
