@@ -17,5 +17,3 @@ do
 done
 op signout
 set_kubeconfigs.sh
-kubectl config view --merge --flatten > $HOME/.kube/config
-export KUBECONFIG=$HOME/.kube/config
