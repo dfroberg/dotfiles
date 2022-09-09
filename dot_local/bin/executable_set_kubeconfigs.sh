@@ -1,4 +1,6 @@
 #!/usr/bin/env fish
-set FILES $(ls $HOME/.kube/config-*);  eval 'export KUBECONFIG=$(echo $FILES|sed "s/ /:/g")'
+set FILES $(ls $HOME/.kube/config-*);  eval 'set -gx KUBECONFIG $(echo $FILES|sed "s/ /:/g")'
+echo "Merging $KUBECONFIG"
 kubectl config view --merge --flatten > $HOME/.kube/config
-export KUBECONFIG=$HOME/.kube/config
+set -gx -x KUBECONFIG "$HOME/.kube/config"
+echo "KUBECONFIG is now $KUBECONFIG"
