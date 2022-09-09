@@ -1,4 +1,4 @@
-#!/bin/env bash
+#!/usr/bin/env bash
 # Save current KUBECONFIGs to a op
 eval $(pass my.1password.com/danny.froberg@consensys.net | op signin)
 KUBEFILES="$HOME/.kube/config*"

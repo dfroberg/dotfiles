@@ -1,4 +1,4 @@
-#!/bin/env bash
+#!/usr/bin/env bash
 # Restore current KUBECONFIGs to from OP
 eval $(pass my.1password.com/danny.froberg@consensys.net | op signin)
 KUBEFILES=$(op --vault=Private document list | grep ".kube/config-" | grep -v ".bak" | awk '{print $2}')
