@@ -16,6 +16,6 @@ do
     fi
 done
 op signout
-kubeconfigs.sh
+set_kubeconfigs.sh
 kubectl config view --merge --flatten > $HOME/.kube/config
 export KUBECONFIG=$HOME/.kube/config

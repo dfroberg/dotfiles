@@ -3,7 +3,7 @@
 eval $(pass my.1password.com/danny.froberg@consensys.net | op signin)
 KUBEFILES="$HOME/.kube/config*"
 IFS=$'\n' #for in $() splits based on IFS
-for entry in $(ls $KUBEFILES | grep "config-" | grep -v ".bak" |)
+for entry in $(ls $KUBEFILES | grep "config-" | grep -v ".bak" | grep -v ".tmp")
 do
     FULLPATH="$entry"
     OPPATH=$(echo $entry | sed "s|$HOME/||")
