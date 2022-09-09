@@ -1,7 +1,7 @@
 #!/bin/env bash
 # Restore current KUBECONFIGs to from OP
 eval $(pass my.1password.com/danny.froberg@consensys.net | op signin)
-KUBEFILES=$(op --vault=Private document list | grep ".kube/" | grep -v ".bak" | awk '{print $2}')
+KUBEFILES=$(op --vault=Private document list | grep ".kube/config-" | grep -v ".bak" | awk '{print $2}')
 IFS=$'\n' #for in $() splits based on IFS
 for entry in $(ls $KUBEFILES)
 do
