@@ -3,7 +3,7 @@
 eval $(pass my.1password.com/danny.froberg@consensys.net | op signin)
 KUBEFILES=$(op --vault=Private document list | grep ".kube/config-" | grep -v ".bak" | awk '{print $2}')
 IFS=$'\n' #for in $() splits based on IFS
-for entry in $(ls $KUBEFILES)
+for entry in $KUBEFILES
 do
     FULLPATH="$HOME/$entry"
     OPPATH=$entry
@@ -18,3 +18,4 @@ done
 op signout
 kubeconfigs.sh
 kubectl config view --merge --flatten > $HOME/.kube/config
+export KUBECONFIG=$HOME/.kube/config
