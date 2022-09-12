@@ -1,5 +1,5 @@
 {{ if eq .chezmoi.os "linux" -}}
-#!/usr/bin/fish
+#!/usr/bin/env fish
 
 echo -e "\033[0;32m>>>>> Begin Setting Up Fish shell <<<<<\033[0m"
 export PATH="/home/linuxbrew/.linuxbrew/sbin:/home/linuxbrew/.linuxbrew/bin:/home/$USER/go/bin:/home/$USER/.local/opt/go/bin:/home/$USER/.local/share/aquaproj-aqua/bin:/home/$USER/.local/bin:$PATH"
