@@ -19,6 +19,16 @@ if type -q chezmoi
   chezmoi completion fish --output=$__fish_config_dir/completions/chezmoi.fish
 end
 
+#if type -q argocd
+#  echo "setting up argocd completion"
+#  argocd completion fish > $__fish_config_dir/completions/argo.fish
+#end
+
+if type -q datree
+  echo "setting up datree completion"
+  datree completion fish > $__fish_config_dir/completions/datree.fish
+end
+
 if type -q flux
   echo "setting up flux completion"
   flux completion fish > $__fish_config_dir/completions/flux.fish
