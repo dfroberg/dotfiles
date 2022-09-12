@@ -11,6 +11,7 @@ do
     op document get $OPPATH > $FULLPATH
     if [ $? -eq 0 ]; then
         echo "> Saved $OPPATH to $FULLPATH"
+        chmod 600 $FULLPATH
     else
         echo "> Failed to save $OPPATH to $FULLPATH"
     fi
