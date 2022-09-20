@@ -37,7 +37,6 @@ These are the plugins I'm using:
 - [Starship](https://starship.rs/)
 - [FZF Fish](https://github.com/patrickF1/fzf.fish)
 - [Puffer Fish](https://github.com/nickeb96/puffer-fish)
-- [tmux.fish](https://github.com/budimanjojo/tmux.fish)
 - [autopair.fish](https://github.com/jorgebucaran/autopair.fish)
 - [fish-abbreviation-tips](https://github.com/gazorby/fish-abbreviation-tips)
 
@@ -64,13 +63,16 @@ These are the plugins I'm using:
 - [tokyonight.nvim](https://github.com/folke/tokyonight.nvim)
 - [nvim-cmp](https://github.com/hrsh7th/nvim-cmp)
 - [null-ls.nvim](https://github.com/jose-elias-alvarez/null-ls.nvim)
-- [nvim-lsp-installer](https://github.com/williamboman/nvim-lsp-installer)
+- [mason.nvim](https://github.com/williamboman/mason.nvim)
+- [mason-tool-installer.nvim](https://github.com/WhoIsSethDaniel/mason-tool-installer.nvim)
 - [lir.nvim](https://github.com/tamago324/lir.nvim)
 - [nvim-treesitter](https://github.com/nvim-treesitter/nvim-treesitter)
 - [nvim-ts-autotag](https://github.com/windwp/nvim-ts-autotag)
-- [surround.nvim](blackCauldron7/surround.nvim)
-- [Trouble](https://github.com/folke/trouble.nvim)
-- [impatient.nvim](https://github.com/lewis6991/impatient.nvim)
+- [nvim-surround](https://github.com/kylechui/nvim-surround)
+- [trouble](https://github.com/folke/trouble.nvim)
+- [presence.nvim](https://github.com/andweeb/presence.nvim)
+- [gitsigns.nvim](https://github.com/lewis6991/gitsigns.nvim)
+- [b64.nvim](https://github.com/taybart/b64.nvim)
 
 To update Neovim plugins, do `:PackerSync` in your nvim.
 **Note**: You need Neovim version >=0.7.0
@@ -138,10 +140,10 @@ Chezmoi will do this automatically for you.
 ## :inbox_tray:&nbsp; Installation
 
 Git clone this repository into your host machine:
-`git clone https://github.com/dfroberg/dotfiles.git`
+`git clone https://github.com/budimanjojo/dotfiles.git`
 Run install.sh:
 `./install.sh`
-Then do `chezmoi init --apply dfroberg`
+Then do `chezmoi init --apply budimanjojo`
 
 ## :scroll:&nbsp; Cheatsheet
 
@@ -234,7 +236,7 @@ If they are not in the table, that means it's using the default Vim keybindings.
 | Normal        | `<Leader>ll`  | Jump forward to newer cursor position |
 | Normal/Visual | `Tab`         | Indent current line or selection |
 | Normal/Visual | `Shift+Tab`   | De-indent current line or selection |
-| Normal        | `<Leader>lr>` | Restart LSP client |
+| Normal        | `<Leader>lr`  | Restart LSP client |
 | Normal        | `<Leader>fz`  | Open FzfLua |
 | Normal        | `<Leader>ff`  | Open FzfLua to find files |
 | Normal        | `<Leader>fg`  | Open FzfLua to live grep |
@@ -300,3 +302,36 @@ If they are not in the table, that means it's using the default Tmux keybindings
 | `<copy-mode>y`          | Copy selected text |
 | `<copy-mode>Y`          | Copy the whole line of selected text |
 | `<copy-mode>D`          | Copy till the end of line from selected text |
+
+### Zellij keybindings
+
+I'm migrating my tmux to [Zellij](https://zellij.dev/).
+I mimicked my tmux configuration to work in zellij but not everything works the same.
+Prefix key is `Alt+a`, I use the "switch to normal mode" in zellij to achieve this.
+`<normal>` means you need to be in normal mode, `<pane>` means pane mode, and so on.
+The table below lists all the keybindings set.
+
+| Keypress               | Description |
+| :--------------------: | :---------- |
+| `<locked>Alt+a`        | Swith to normal mode (act like prefix key in tmux) |
+| `<normal>Alt+s`        | Create new horizontal split window and back to locked mode |
+| `<normal>Alt+v`        | Create new vertical split window and back to locked mode |
+| `<normal>r`            | Switch to renametab mode |
+| `<normal>h`            | Move selection to left pane |
+| `<normal>j`            | Move selection to pane below |
+| `<normal>k`            | Move selection to pane above |
+| `<normal>l`            | Move selection to right pane |
+| `<normal>>`            | Move pane around |
+| `<normal>H`            | Resize current pane upwards |
+| `<normal>J`            | Resize current pane downwards |
+| `<normal>H`            | Resize current pane to the left |
+| `<normal>L`            | Resize current pane to the right |
+| `<normal>Alt+n`        | Go to next window |
+| `<normal>Alt+p`        | Go to previous window |
+| `<normal>c`            | Open new tab and back to locked mode |
+| `<normal>x`            | Close current pane and back to locked mode |
+| `<normal>a`            | Open pane with $EDITOR and back to locked mode |
+| `<normal>Esc/' '/"\n"` | Switch back to locked mode |
+| `<renametab>Alt+a`     | Switch to normal mode |
+| `<renametab>"\n"`      | Switch to locked mode |
+| `<renametab>Esc`       | Confirm tab name and back to locked mode |
