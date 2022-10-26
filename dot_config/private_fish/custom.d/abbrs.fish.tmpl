@@ -3,6 +3,28 @@ if type -q aws
   abbr eksl 'aws sts get-caller-identity --profile infura-prod'
   abbr eksla 'aws sts get-caller-identity --profile infura-prod-admin'
   abbr eksld 'aws sts get-caller-identity --profile infura-dev-admin'
+  abbr ekslipfsd 'aws sts get-caller-identity --profile ipfs-dev'
+  abbr ekslipfs 'aws sts get-caller-identity --profile ipfs-prod'
+end
+
+# terraform
+if type -q terraform
+  abbr tf 'terraform'
+  abbr terrafrom 'terraform'
+  abbr tfi 'terraform init'
+  abbr tfiu 'terraform init -upgrade'
+  abbr tfp 'terraform plan'
+  abbr tfa 'terraform apply'
+  abbr tfaa 'terraform apply -auto-approve'
+  abbr tfd 'terraform destroy'
+  abbr tfv 'terraform validate'
+  abbr tfw 'terraform workspace'
+  abbr tfws 'terraform workspace select'
+  abbr tfwl 'terraform workspace list'
+  abbr tfwnew 'terraform workspace new'
+  abbr tfwdelete 'terraform workspace delete'
+  abbr tfwshow 'terraform workspace show'
+  abbr tff 'terraform fmt -recursive'
 end
 
 # 1pass op
@@ -18,8 +40,8 @@ end
 # kubectx
 if type -q kubectx
   abbr kcx 'kubectx'
-  abbr kcxd 'kubectx dev'
-  abbr kcxp 'kubectx prod'
+  abbr kcxd 'kubectx infura-dev'
+  abbr kcxp 'kubectx infura-prod'
   abbr kcxs 'kubectx admin@sidero-cluster'
 end
 
