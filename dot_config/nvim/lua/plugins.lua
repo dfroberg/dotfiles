@@ -23,8 +23,16 @@ packer.init({
 packer.startup({
   function(use)
     use 'wbthomason/packer.nvim'
-    use { "williamboman/mason.nvim" }
-    use { "williamboman/mason-lspconfig.nvim" }
+    use { "williamboman/mason.nvim" 
+        , config = function()
+            require("mason").setup()
+          end
+        }
+    use { "williamboman/mason-lspconfig.nvim" 
+        , config = function()
+            require("mason-lspconfig").setup()
+          end
+        }
 
     -- Syntax highlighting
     use 'pearofducks/ansible-vim'
