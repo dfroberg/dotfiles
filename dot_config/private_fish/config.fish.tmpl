@@ -29,5 +29,5 @@ end
 
 ## Launch direnv
 if type -q direnv
-  direnv hook fish | source
+  DIRENV_LOG_FORMAT="" direnv hook fish | source
 end
