@@ -4,7 +4,7 @@ registries:
 packages:
 {{- if (eq .chezmoi.os "linux") }}
   - name: twpayne/chezmoi@v2.27.1
-  - name: junegunn/fzf@0.35.0
+  - name: junegunn/fzf@0.35.1
   - name: starship/starship@v1.11.0
   - name: ajeetdsouza/zoxide@v0.8.3
   - name: BurntSushi/ripgrep@13.0.0
@@ -61,7 +61,7 @@ packages:
 {{-   end }}
 {{ else if eq .chezmoi.os "darwin" }}
   - name: twpayne/chezmoi@v2.27.1
-  - name: junegunn/fzf@0.35.0
+  - name: junegunn/fzf@0.35.1
   - name: starship/starship@v1.11.0
   - name: ajeetdsouza/zoxide@v0.8.3
   - name: BurntSushi/ripgrep@13.0.0
