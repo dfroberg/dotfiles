@@ -3,7 +3,7 @@ registries:
     ref: v3.102.0    # renovate: depName=aquaproj/aqua-registry
 packages:
 {{- if (eq .chezmoi.os "linux") }}
-  - name: twpayne/chezmoi@v2.27.2
+  - name: twpayne/chezmoi@v2.27.3
   - name: junegunn/fzf@0.35.1
   - name: starship/starship@v1.11.0
   - name: ajeetdsouza/zoxide@v0.8.3
@@ -60,7 +60,7 @@ packages:
   - name: budimanjojo/talhelper@v1.5.4
 {{-   end }}
 {{ else if eq .chezmoi.os "darwin" }}
-  - name: twpayne/chezmoi@v2.27.2
+  - name: twpayne/chezmoi@v2.27.3
   - name: junegunn/fzf@0.35.1
   - name: starship/starship@v1.11.0
   - name: ajeetdsouza/zoxide@v0.8.3
