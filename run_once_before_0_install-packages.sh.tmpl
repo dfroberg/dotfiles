@@ -17,6 +17,7 @@ curl -sS https://webinstall.dev/keypairs | bash
 brew tap datreeio/datree
 brew install datreeio/datree/datree
 brew install awscli
+brew install aws-sso-cli
 brew install shellcheck
 brew install shfmt
 brew install yamllint
@@ -30,6 +31,13 @@ brew install clusterctl
 brew install neovim
 brew install act
 brew install checkov
+brew install gum
+brew install golangci-lint
+brew install docker
+brew install docker-buildx
+brew install Noovolari/brew/leapp-cli
+brew install mike-engel/jwt-cli/jwt-cli
+brew install pre-commit
 # Add aditional modules
 go install golang.org/x/tools/gopls@latest
 wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
@@ -47,10 +55,12 @@ ulimit -n 8192
 brew -v
 eval $(/opt/homebrew/bin/brew shellenv)
 # Brew packages
+brew install coreutils
 brew tap datreeio/datree
 brew install datreeio/datree/datree
 brew install --cask 1password/tap/1password-cli
 brew install awscli
+brew install aws-sso-cli
 brew install shellcheck
 brew install shfmt
 brew install yamllint
@@ -66,5 +76,12 @@ brew install neovim
 brew install act
 brew install gpg
 brew install checkov
+brew install gum
+brew install golangci-lint
+brew install docker
+brew install docker-buildx
+brew install Noovolari/brew/leapp-cli
+brew install mike-engel/jwt-cli/jwt-cli
+brew install pre-commit
 echo -e "\033[0;32m>>>>> End Setting Up Custom Packages <<<<<\033[0m"
 {{ end -}}

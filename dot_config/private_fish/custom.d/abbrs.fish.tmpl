@@ -120,8 +120,8 @@ end
 # chezmoi
 if type -q chezmoi
   abbr c 'chezmoi'
-  abbr ca 'chezmoi apply'
-  abbr cu 'chezmoi update'
+  abbr ca 'eval (pass my.1password.com/danny.froberg@consensys.net | op signin) && chezmoi apply'
+  abbr cu 'eval (pass my.1password.com/danny.froberg@consensys.net | op signin) && chezmoi update'
   abbr ce 'chezmoi edit'
   abbr cs 'chezmoi status'
   abbr cc 'chezmoi cd'
