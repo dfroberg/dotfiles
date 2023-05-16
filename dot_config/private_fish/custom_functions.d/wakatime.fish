@@ -19,6 +19,8 @@ if test -z "$gitproject"
 else
     if echo (pwd) | grep -qEi "^/Users/$USER/Sites/"
         set  project (echo (pwd) | sed "s#^/Users/$USER/Sites/\\([^/]*\\).*#\\1#")
+    else if echo (pwd) | grep -qEi "^/Users/$USER/infura/"
+        set  project (echo (pwd) | sed "s#^/Users/$USER/infura/\\([^/]*\\).*#\\1#")
     else if echo (pwd) | grep -qEi "^/home/$USER/projects/"
         set  project (echo (pwd) | sed "s#^/home/$USER/projects/\\([^/]*\\).*#\\1#")
     else if echo (pwd) | grep -qEi "^/home/$USER/cluster/"
