@@ -1,3 +1,9 @@
+## Ensure thas /var/run/user/1000 exists
+if not test -d /var/run/user/1000
+  # sudo systemctl --user start systemd-user-sessions.service
+  sudo systemctl start user@1000
+end
+
 ## Source custom configs
 for file in $__fish_config_dir/custom.d/*.fish
   source $file

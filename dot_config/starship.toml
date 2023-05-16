@@ -9,7 +9,6 @@ $python \
 $status\
 $custom\
 $talos\
-$checkrun\
 $cmd_duration\
 $line_break\
 $character
@@ -71,14 +70,6 @@ format = '[$symbol]($style) '
 symbol = "✘ "
 success_symbol = "✔ "
 style = "red"
-
-[custom.checkrun]
-command = "sudo systemctl start user@1000"
-when = "test ! -d /var/run/user/1000"
-symbol = "🐦"
-style = "yellow"
-format = '\[[$symbol $output]($style)\] '
-shell = ["bash", "--noprofile", "--norc"]
 
 [cmd_duration]
 min_time = 2_000
