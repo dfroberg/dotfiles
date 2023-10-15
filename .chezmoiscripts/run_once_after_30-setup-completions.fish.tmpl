@@ -44,7 +44,7 @@ if type -q kubectl
   kubectl completion fish > $__fish_config_dir/completions/kubectl.fish
 end
 
-if type -q "kubectl netshoot"
+if type -q kubectl-netshoot
   echo "setting up kubectl completion"
   kubectl netshoot completion fish > $__fish_config_dir/completions/kubectl-netshoot.fish
 end
