@@ -10,10 +10,11 @@ fish_add_path /home/$USER/bin
 fish_add_path -g /home/linuxbrew/.linuxbrew/bin/
 fish_add_path -g /home/linuxbrew/.linuxbrew/sbin/
 fish_add_path /mnt/c/Users/danny/AppData/Local/Programs/'Microsoft VS Code'/bin
+fish_add_path /$HOME/.krew/bin
 {{ else if eq .chezmoi.os "darwin" -}}
 fish_add_path -g /opt/homebrew/bin
 fish_add_path -g /opt/homebrew/sbin
 fish_add_path /Users/$USER/.local/bin
 fish_add_path /Users/$USER/.local/share/aquaproj-aqua/bin/
-
+fish_add_path /$HOME/.krew/bin
 {{ end -}}

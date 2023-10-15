@@ -42,6 +42,7 @@ end
 if type -q kubectl
   echo "setting up kubectl completion"
   kubectl completion fish > $__fish_config_dir/completions/kubectl.fish
+  kubectl netshoot completion fish > $__fish_config_dir/completions/kubectl-netshoot.fish
 end
 
 if type -q helm
