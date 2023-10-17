@@ -1,0 +1,66 @@
+#!/bin/bash
+echo "# Generated"
+
+cat <<EOF
+[profile localstack]
+region = ap-northeast-1
+output = json
+
+[default]
+region=us-east-1
+output=json
+cli_pager=
+
+{{- onepasswordDocument "sgx3xioo74jyrv23csw6u3zqti" -}}
+
+# Clusters
+
+EOF
+
+REPOS=$(ls -1 -d ~/infura/terraform-aws-eks-cluster*)
+for repo in $REPOS; do
+  title=$(basename $repo)
+  title=${title/terraform-aws-eks-cluster-/}
+  if [[ $title == "test-dev" ]]; then
+    continue
+  fi
+  if [[ $title == "eks-factory" ]]; then
+    continue
+  fi
+  cd $repo >/dev/null;
+  # check if .envrc exists
+  if [[ -f .envrc ]]; then
+
+  eval $(cat cluster_infra/terraform.tfvars | sed -e 's/[[:space:]]*//g' -e '/^$/d' -e '/^#/d' -e '/\[/d' -e 's/^/TF_VAR_/')
+  # echo $TF_VAR_account_id
+  # echo $TF_VAR_region
+cat <<EOF
+[profile infura-$title-sso]
+sso_start_url=https://consensys.awsapps.com/start
+sso_region=$TF_VAR_region
+sso_account_id=$TF_VAR_account_id
+sso_role_name=AdministratorAccess
+[profile infura-$title]
+region=$TF_VAR_region
+output=json
+cli_pager=
+credential_process=aws-vault exec infura-$title-sso --json --backend=pass
+# Assumes the role of the deployer role in the account
+[profile infura-$title-env0-deployer-role]
+source_profile=infura-$title
+region=$TF_VAR_region
+output=json
+role_arn=arn:aws:iam::$TF_VAR_account_id:role/env0-deployer-role
+external_id=c525c196-51d4-44d1-97c0-5b6d1a3a9520
+
+EOF
+  cd - >/dev/null;
+  fi
+done;
+
+cat <<EOF
+
+# BEGIN_AWS_SSO_CLI
+
+# END_AWS_SSO_CLI
+EOF

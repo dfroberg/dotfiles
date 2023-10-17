@@ -6,7 +6,9 @@ k9s:
   logoless: false
   crumbsless: false
   readOnly: false
+  noExitOnCtrlC: false
   noIcons: false
+  skipLatestRevCheck: false
   logger:
     tail: 500
     buffer: 5000
@@ -14,12 +16,13 @@ k9s:
     fullScreenLogs: false
     textWrap: true
     showTime: false
-  currentContext: default
-  currentCluster: default
+  currentContext: test-dev
+  currentCluster: arn:aws:eks:us-east-1:419660905811:cluster/test-dev
   clusters:
     default:
       namespace:
-        active: default
+        active: all
+        lockFavorites: false
         favorites:
         - all
         - default
@@ -39,6 +42,32 @@ k9s:
         limits:
           cpu: 100m
           memory: 100Mi
+        labels: {}
+      portForwardAddress: 0.0.0.0    
+    arn:aws:eks:us-east-1:419660905811:cluster/test-dev:
+      namespace:
+        active: all
+        lockFavorites: false
+        favorites:
+        - all
+        - default
+        - argocd
+        - karpenter
+        - kube-system
+        - prometheus
+      view:
+        active: deploy
+      featureGates:
+        nodeShell: true
+      shellPod:
+        image: nicolaka/netshoot:latest
+        command: []
+        args: []
+        namespace: default
+        limits:
+          cpu: 100m
+          memory: 100Mi
+        labels: {}
       portForwardAddress: 0.0.0.0
   thresholds:
     cpu:
