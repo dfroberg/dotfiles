@@ -1,6 +1,6 @@
 #!/bin/bash
 
-ORG="${1,,}" # Your organization in lowercase
+ORG=${1}" # Your organization in lowercase
 CLONE_PATH="/home/dfroberg/$ORG" # Path in your filesystem where you want to clone the repos to
 DEFAULT_SUBSET=""
 SUBSET="${2:-$DEFAULT_SUBSET}" # Only clone repos that contain this string in their name
