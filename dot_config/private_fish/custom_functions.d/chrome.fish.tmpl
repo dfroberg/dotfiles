@@ -1,5 +1,5 @@
 {{ if (eq .chezmoi.os "linux") -}}
-function chorme --wraps "google-chrome" --description "Open a new Chrome window"
-  google-chrome $argv 2>/dev/null &
+function chrome --wraps "chrome" --description "Open a new Chrome window"
+  /usr/bin/google-chrome $argv 2>/dev/null &
 end
 {{- end -}}
