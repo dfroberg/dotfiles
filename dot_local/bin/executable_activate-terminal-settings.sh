@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # Get startupActions
-STARTUPACTIONS=$(~/create-terminal-settings.sh)
+STARTUPACTIONS=$(~/.local/bin/create-terminal-settings.sh)
 #echo $STARTUPACTIONS
 
 # patch settings.json using jq in C:\Users\danny\AppData\Local\Packages\Microsoft.WindowsTerminalPreview_8wekyb3d8bbwe\LocalState converted to WSL /mnt/c/Users/danny/AppData/Local/Packages/Microsoft.WindowsTerminalPreview_8wekyb3d8bbwe/LocalState/settings.json
