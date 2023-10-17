@@ -1,5 +1,5 @@
 k9s:
-  refreshRate: 2
+  refreshRate: 1
   maxConnRetry: 5
   enableMouse: false
   headless: false
@@ -8,11 +8,11 @@ k9s:
   readOnly: false
   noIcons: false
   logger:
-    tail: 100
+    tail: 500
     buffer: 5000
     sinceSeconds: -1
     fullScreenLogs: false
-    textWrap: false
+    textWrap: true
     showTime: false
   currentContext: default
   currentCluster: default
@@ -23,19 +23,23 @@ k9s:
         favorites:
         - all
         - default
+        - argocd
+        - karpenter
+        - kube-system
+        - prometheus
       view:
-        active: pod
+        active: deploy
       featureGates:
-        nodeShell: false
+        nodeShell: true
       shellPod:
-        image: busybox:1.31
+        image: nicolaka/netshoot:latest
         command: []
         args: []
         namespace: default
         limits:
           cpu: 100m
           memory: 100Mi
-      portForwardAddress: localhost
+      portForwardAddress: 0.0.0.0
   thresholds:
     cpu:
       critical: 90
