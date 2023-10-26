@@ -28,8 +28,8 @@ for repo in $REPOS; do
     continue
   fi
   cd $repo >/dev/null;
-  # check if .envrc exists
-  if [[ -f .envrc ]]; then
+  # check if vars exists
+  if [[ -f cluster_infra/terraform.tfvars ]]; then
 
   eval $(cat cluster_infra/terraform.tfvars | sed -e 's/[[:space:]]*//g' -e '/^$/d' -e '/^#/d' -e '/\[/d' -e 's/^/TF_VAR_/')
   # echo $TF_VAR_account_id
