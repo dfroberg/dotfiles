@@ -11,6 +11,12 @@ region=us-east-1
 output=json
 cli_pager=
 
+[sso-session default]
+sso_start_url=https://consensys.awsapps.com/start
+sso_region=us-east-1
+sso_registration_scopes = sso:account:access
+
+# Include 
 {{- onepasswordDocument "sgx3xioo74jyrv23csw6u3zqti" -}}
 
 # Clusters
@@ -36,22 +42,25 @@ for repo in $REPOS; do
   # echo $TF_VAR_region
 cat <<EOF
 [profile infura-$title-sso]
-sso_start_url=https://consensys.awsapps.com/start
+sso_session = default
 sso_region=$TF_VAR_region
 sso_account_id=$TF_VAR_account_id
 sso_role_name=AdministratorAccess
+
 [profile infura-$title]
 region=$TF_VAR_region
 output=json
 cli_pager=
 credential_process=aws-vault exec infura-$title-sso --json --backend=pass
+
 # Assumes the role of the deployer role in the account
 [profile infura-$title-env0-deployer-role]
 source_profile=infura-$title
 region=$TF_VAR_region
 output=json
-role_arn=arn:aws:iam::$TF_VAR_account_id:role/env0-deployer-role
-external_id=c525c196-51d4-44d1-97c0-5b6d1a3a9520
+role_arn=arn:aws:iam::$TF_VAR_account_id:role/{{ onepasswordRead "op://private/deployer-role/password" }}
+external_id={{ onepasswordRead "op://private/deployer-role-external-id/password" }}
+
 
 EOF
   cd - >/dev/null;
