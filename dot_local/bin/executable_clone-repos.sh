@@ -28,7 +28,7 @@ echo "Cloning repos from $ORG to $CLONE_PATH that contain \"$SUBSET\" in their n
 # loop over comma separated list of strings in SUBSET variable and echo the subset
 for subset in $(echo $SUBSET | tr "," "\n"); do
   echo "Searching for \"$subset\""
-  REPOS=$(gh repo list INFURA --limit 9999 --no-archived --json sshUrl --jq '.[] | select(.sshUrl | contains("'$subset'")) | .sshUrl ')
+  REPOS=$(gh repo list $ORG --limit 9999 --no-archived --json sshUrl --jq '.[] | select(.sshUrl | contains("'$subset'")) | .sshUrl ')
   for REPO_URL in $REPOS; do
     echo Getting $REPO_URL
     temp=${REPO_URL##*/}
