@@ -89,4 +89,14 @@ if type -q task
   curl --silent --show-error https://raw.githubusercontent.com/go-task/task/master/completion/fish/task.fish > $__fish_config_dir/completions/task.fish
 end
 
+if type -q kubectl-argo-rollouts
+  echo "setting up kubectl-argo-rollouts completion"
+  kubectl-argo-rollouts completion fish > $__fish_config_dir/completions/kubectl-argo-rollouts.fish
+end
+
+if type -q kyverno
+  echo "setting up kyverno completion"
+  kyverno completion fish > $__fish_config_dir/completions/kyverno.fish
+end
+
 echo -e "\033[0;32m>>>>> Finish Setting Fish Completions <<<<<\033[0m"

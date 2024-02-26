@@ -38,6 +38,13 @@ brew install docker-buildx
 brew install Noovolari/brew/leapp-cli
 brew install mike-engel/jwt-cli/jwt-cli
 brew install pre-commit
+brew install argoproj/tap/kubectl-argo-rollouts
+brew tap guessi/tap && brew install eks-ami-finder
+brew tap aws/tap && brew install eks-node-viewer
+brew tap spectralops/tap && brew install teller
+brew tap updatecli/updatecli && brew install updatecli
+brew install kyverno
+
 # Add aditional modules
 go install golang.org/x/tools/gopls@latest
 wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
@@ -83,5 +90,11 @@ brew install docker-buildx
 brew install Noovolari/brew/leapp-cli
 brew install mike-engel/jwt-cli/jwt-cli
 brew install pre-commit
+brew install argoproj/tap/kubectl-argo-rollouts
+brew tap guessi/tap && brew install eks-ami-finder
+brew tap aws/tap && brew install eks-node-viewer
+brew tap spectralops/tap && brew install teller
+brew tap updatecli/updatecli && brew install updatecli
+brew install kyverno
 echo -e "\033[0;32m>>>>> End Setting Up Custom Packages <<<<<\033[0m"
 {{ end -}}
