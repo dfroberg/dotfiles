@@ -1,7 +1,7 @@
 local fn = vim.fn
 local cmd = vim.cmd
 
-local install_path = fn.stdpath('data') .. '/lazy/lazy.nvim'
+local install_path = fn.stdpath('data') .. '/site/pack/lazy/start/lazy.nvim'
 if fn.empty(fn.glob(install_path)) > 0 then
    fn.system({
     "git",
@@ -20,14 +20,42 @@ vim.g.mapleader = " "
 
 require('lazy').setup({
   plugins = {
-    -- Your plugins go here. For example:
+    -- Existing plugins...
     { "williamboman/mason.nvim", config = function() require("mason").setup() end },
     { "williamboman/mason-lspconfig.nvim", config = function() require("mason-lspconfig").setup() end },
     'pearofducks/ansible-vim',
     'alker0/chezmoi.vim',
     { 'norcalli/nvim-colorizer.lua', config = function() require('colorizer').setup() end },
     'folke/tokyonight.nvim',
-    -- Add more plugins as needed
+
+    -- Additional plugins from your selection
+    'stevearc/dressing.nvim',
+    { 'nvim-lualine/lualine.nvim', requires = 'kyazdani42/nvim-web-devicons', config = function() require('configs._lualine') end },
+    { 'lukas-reineke/indent-blankline.nvim', config = function() require('indent_blankline').setup() end },
+    { 'neovim/nvim-lspconfig', requires = { 'b0o/schemastore.nvim', 'ray-x/lsp_signature.nvim', 'lewis6991/gitsigns.nvim', 'williamboman/mason.nvim', 'williamboman/mason-lspconfig', 'jose-elias-alvarez/null-ls.nvim', 'nvim-lua/plenary.nvim', 'WhoIsSethDaniel/mason-tool-installer.nvim' }, config = function() require('configs._lspconfig') end },
+    { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate', config = function() require('configs._treesitter') end },
+    { 'hrsh7th/nvim-cmp', config = function() require('configs._nvim-cmp') end },
+    { 'hrsh7th/cmp-nvim-lsp', after = 'nvim-cmp' },
+    { 'hrsh7th/cmp-buffer', after = 'nvim-cmp' },
+    { 'hrsh7th/cmp-path', after = 'nvim-cmp' },
+    { 'f3fora/cmp-spell', after = 'nvim-cmp' },
+    { 'saadparwaiz1/cmp_luasnip', after = { 'nvim-cmp', 'LuaSnip' }},
+    { 'onsails/lspkind-nvim', module = 'lspkind' },
+    { 'L3MON4D3/LuaSnip', requires = 'rafamadriz/friendly-snippets', module = 'luasnip' },
+    { 'folke/trouble.nvim', opt = true, event = 'BufReadPost', config = function() require('trouble').setup() end },
+    { 'windwp/nvim-ts-autotag', config = function() require('nvim-ts-autotag').setup() end },
+    { 'ibhagwan/fzf-lua', requires = 'kyazdani42/nvim-web-devicons', config = function() require('configs._fzf-lua') end },
+    { 'phaazon/hop.nvim', branch = 'v2', config = function() require('hop').setup() end },
+    { 'max397574/better-escape.nvim', config = function() require('better_escape').setup { mapping = { 'ii' }} end },
+    'numToStr/FTerm.nvim',
+    { 'tamago324/lir.nvim', requires = { 'nvim-lua/plenary.nvim', 'tamago324/lir-git-status.nvim', 'kyazdani42/nvim-web-devicons' }, config = function () require('configs._lir') end },
+    { 'lewis6991/gitsigns.nvim', config = function() require('configs._gitsigns') end },
+    { 'numToStr/Comment.nvim', config = function() require('Comment').setup() end },
+    { 'windwp/nvim-autopairs', config = function() require('configs._autopairs') end },
+    { 'kylechui/nvim-surround', config = function() require('nvim-surround').setup() end },
+    'taybart/b64.nvim',
+    { 'folke/which-key.nvim', config = function() require('which-key').setup() end },
+    'andweeb/presence.nvim',
   },
 })
 
