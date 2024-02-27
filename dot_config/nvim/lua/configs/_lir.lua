@@ -83,7 +83,7 @@ end
 
 lir.setup {
   show_hidden_files = false,
-  devicons.enable = true,
+  devicons = {enable = true},
   hide_cursor = true,
   mappings = {
     ['h']     = actions.up,
