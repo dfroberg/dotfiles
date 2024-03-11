@@ -1,3 +1,5 @@
+'' = 'https://starship.rs/config-schema.json'
+
 format = """
 $username\
 $hostname\
@@ -16,6 +18,9 @@ $character
 
 add_newline = false
 command_timeout = 1000
+
+[line_break]
+disabled = true
 
 [username]
 style_user = "yellow"
@@ -121,3 +126,7 @@ style = "yellow"
 symbol = "元"
 format = '\[[$symbol $output]($style)\] '
 shell = ["bash", "--noprofile", "--norc"]
+
+# Disables the custom module
+[custom]
+disabled = false
