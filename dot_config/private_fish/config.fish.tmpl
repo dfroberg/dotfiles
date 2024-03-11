@@ -11,7 +11,10 @@ for file in $__fish_config_dir/custom.d/*.fish
 end
 
 ## Launch Starship prompt
+
 if type -q starship
+  # Initialize Starship prompt for Warp
+  set -x STARSHIP_SHELL warp
   starship init fish | source
 end
 
