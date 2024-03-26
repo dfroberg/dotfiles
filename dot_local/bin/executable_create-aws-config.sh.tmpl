@@ -56,6 +56,8 @@ credential_process=aws-vault exec infura-$title-sso --json --backend=pass
 
 # Assumes the role of the deployer role in the account
 [profile infura-$title-env0-deployer-role]
+sso_start_url=https://consensys.awsapps.com/start
+sso_region=us-east-1
 source_profile=infura-$title
 region=$TF_VAR_region
 output=json
