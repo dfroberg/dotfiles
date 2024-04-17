@@ -23,11 +23,26 @@ sso_registration_scopes = sso:account:access
 # Team accounts and clusters
 
 EOF
+check_no_cluster_infra() {
+    local dir=$1
 
-REPOS=$(ls -1 -d ~/infura/terraform-aws-eks-cluster*)
+    if [[ ! -d "$dir/cluster_infra" ]]; then
+        #echo "Directory $dir does not contain a cluster_infra directory."
+        return 0
+    else
+        #echo "Directory $dir contains a cluster_infra directory."
+        return 1
+    fi
+}
+REPOS=$(ls -1 -d $REPOROOT/terraform-aws-eks-cluster*)
 for repo in $REPOS; do
   title=$(basename $repo)
   title=${title/terraform-aws-eks-cluster-/}
+  # by checking that it does not have a cluster_infra directory
+  if check_no_cluster_infra $repo;
+  then
+      continue
+  fi
   if [[ $title == "test-dev" ]]; then
     continue
   fi
