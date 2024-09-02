@@ -59,7 +59,12 @@ packer.startup({
     use {
       'lukas-reineke/indent-blankline.nvim',
       config = function()
-        require('indent_blankline').setup()
+        require("indent_blankline").setup {
+          -- Your custom configurations go here
+          char = '|',
+          buftype_exclude = {"terminal", "nofile"},
+          show_trailing_blankline_indent = false,
+        }
       end
     }
 
