@@ -26,7 +26,7 @@ sudo pacman -S --noconfirm shfmt ansible-lint shellcheck yamllint
 {{   else -}}
 pacman -S --noconfirm shfmt ansible-lint shellcheck yamllint
 {{   end -}}
-{{ else if (eq .osid "linux-ubuntu") || (eq .osid "linux-debian") -}}
+{{ else if or (eq .osid "linux-ubuntu") (eq .osid "linux-debian") -}}
 {{   if ne .chezmoi.username "root" -}}
 #sudo snap install shfmt
 #sudo apt install -y ansible-lint shellcheck yamllint
