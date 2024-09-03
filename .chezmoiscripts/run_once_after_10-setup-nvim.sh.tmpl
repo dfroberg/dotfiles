@@ -1,4 +1,4 @@
-{{ if (eq .chezmoi.os "linux") -}} || {{ if (eq .chezmoi.os "darwin") -}}
+{{ if or (eq .chezmoi.os "linux") (eq .chezmoi.os "darwin") -}}
 #!/bin/bash
 
 set -eufo pipefail
@@ -21,19 +21,19 @@ npm install write-good
 
 # Installation for specific Linux distributions
 {{ if (eq .osid "linux-arch") -}}
-{{   if ne .chezmoi.username "root" -}}
-sudo pacman -S --noconfirm shfmt ansible-lint shellcheck yamllint
-{{   else -}}
-pacman -S --noconfirm shfmt ansible-lint shellcheck yamllint
-{{   end -}}
+  {{ if ne .chezmoi.username "root" -}}
+  sudo pacman -S --noconfirm shfmt ansible-lint shellcheck yamllint
+  {{ else -}}
+  pacman -S --noconfirm shfmt ansible-lint shellcheck yamllint
+  {{ end -}}
 {{ else if or (eq .osid "linux-ubuntu") (eq .osid "linux-debian") -}}
-{{   if ne .chezmoi.username "root" -}}
-#sudo snap install shfmt
-#sudo apt install -y ansible-lint shellcheck yamllint
-{{   else -}}
-#snap install shfmt
-#apt install -y ansible-lint shellcheck yamllint
-{{   end -}}
+  {{ if ne .chezmoi.username "root" -}}
+  sudo snap install shfmt
+  sudo apt install -y ansible-lint shellcheck yamllint
+  {{ else -}}
+  snap install shfmt
+  apt install -y ansible-lint shellcheck yamllint
+  {{ end -}}
 {{ end }}
 
 # Installation for macOS using brew
