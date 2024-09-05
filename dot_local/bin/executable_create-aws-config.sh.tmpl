@@ -63,11 +63,23 @@ sso_region=$TF_VAR_region
 sso_account_id=$TF_VAR_account_id
 sso_role_name=AdministratorAccess
 
+[profile infura-$title-ro-sso]
+sso_session = default
+sso_region=$TF_VAR_region
+sso_account_id=$TF_VAR_account_id
+sso_role_name=ReadOnlyAccess
+
 [profile infura-$title]
 region=$TF_VAR_region
 output=json
 cli_pager=
 credential_process=aws-vault exec infura-$title-sso --json --backend=pass
+
+[profile infura-$title-ro]
+region=$TF_VAR_region
+output=json
+cli_pager=
+credential_process=aws-vault exec infura-$title-ro-sso --json --backend=pass
 
 # Assumes the role of the deployer role in the account
 [profile infura-$title-env0-deployer-role]
