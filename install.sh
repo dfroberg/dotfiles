@@ -14,4 +14,4 @@ if [ ! "$(command -v chezmoi)" ]; then
   fi
 fi
 
-export PATH=$bin_dir;$PATH
+export PATH=$bin_dir:$PATH
