@@ -13,3 +13,5 @@ if [ ! "$(command -v chezmoi)" ]; then
     exit 1
   fi
 fi
+
+export PATH=$bin_dir;$PATH
